@@ -35,12 +35,47 @@
     </select>
     <table id="rblChartType" border="0">
         <tr>
-            <td><input type="radio" name="ChartType" value="1" checked="checked" />Bar</td>
-            <td><input type="radio" name="ChartType" value="2" />Radar</td>
+            <td><input type="radio" name="ChartType" value="1" checked="checked" />Barra</td>
+            <td><input type="radio" name="ChartType" value="2" />Lineal</td>
         </tr>
     </table>
-    <div id="dvChart" style="width:50%; position:relative;">
-    </div>
+    <!--<div id="dvChart" style="width:50%; position:relative;">
+    </div>-->
+
+
+    <table border="0" cellpadding="0" cellspacing="0">
+
+        <tr>
+            <td width="600">
+                <div id="dvChart">
+                </div>
+
+            </td>
+
+        </tr>
+    </table>
+
+
+    <h3>Promedio pacientes nutrición</h3>
+    <table id="rblChartType2" border="0">
+        <tr>
+            <td><input type="radio" name="ChartType2" value="1" checked="checked" />Barra</td>
+            <td><input type="radio" name="ChartType2" value="2" />Radar</td>
+        </tr>
+    </table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0">
+
+        <tr>
+            <td width="800">
+                <div id="dvChart2">
+                </div>
+                <div id="dvMensaje" align="center"></div>
+            </td>
+
+        </tr>
+    </table>
 
 
     <!--<table border="0" cellpadding="0" cellspacing="0">
@@ -74,6 +109,11 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/excanvas/r3/excanvas.js" type="text/javascript"></script>
     <script src="//cdn.jsdelivr.net/chart.js/0.2/Chart.js" type="text/javascript"></script>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.5/chartjs-plugin-annotation.js"></script>
+    <script src="https://cdn.rawgit.com/chartjs/Chart.js/master/samples/utils.js"></script>
 
 
     <script type="text/javascript">
@@ -213,7 +253,7 @@
                             break;
                         case 2:
                             userStrengthsChart = new Chart(ctx, {
-                                type: 'radar',
+                                type: 'line',
                                 data: datachart,
                                 options: {
                                     title: {
@@ -242,11 +282,4 @@
 </body>
 </html>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/excanvas/r3/excanvas.js" type="text/javascript"></script>
-<script src="//cdn.jsdelivr.net/chart.js/0.2/Chart.js" type="text/javascript"></script>
-<script src="~/Chart.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/0.5.5/chartjs-plugin-annotation.js"></script>
-<script src="https://cdn.rawgit.com/chartjs/Chart.js/master/samples/utils.js"></script>
