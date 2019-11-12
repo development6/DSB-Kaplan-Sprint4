@@ -143,6 +143,8 @@
                     //console.log(ingreso);
                     //window.alert(ingreso);
 
+                    var talla = ingreso[7] * ingreso[7];
+
                     var ctx = el.getContext('2d');
                     var userStrengthsChart;
 
@@ -157,17 +159,18 @@
                                         text: "Ergometría"
                                     },
                                     annotation: {
+                                        events: ['click', 'dblclick', 'mouseover', 'mouseout'],
                                         annotations: [
                                             {
                                                 type: 'line',
                                                 mode: 'horizontal',
                                                 scaleID: 'y-axis-0',
-                                                value: 10,
+                                                value: (talla) * 18.5,
                                                 borderColor: 'rgb(255, 99, 132)',
                                                 borderWidth: 2,
                                                 label: {
                                                     enabled: true,
-                                                    content: 'Test label'
+                                                    content: 'Peso mínimo'
                                                 }
 
                                             },
@@ -175,12 +178,12 @@
                                                 type: 'line',
                                                 mode: 'horizontal',
                                                 scaleID: 'y-axis-0',
-                                                value: 100,
+                                                value: (talla) * 24.9,
                                                 borderColor: 'rgb(255,0,0)',
                                                 borderWidth: 2,
                                                 label: {
                                                     enabled: true,
-                                                    content: 'segundo'
+                                                    content: 'Peso máximo aceptable'
                                                 }
 
                                             }
