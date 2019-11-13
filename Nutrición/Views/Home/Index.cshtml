@@ -300,6 +300,37 @@
                                         display: true,
                                         text: "Ergometría"
                                     },
+                                    annotation: {
+                                        events: ['click', 'dblclick', 'mouseover', 'mouseout'],
+                                        annotations: [
+                                            {
+                                                type: 'line',
+                                                mode: 'horizontal',
+                                                scaleID: 'y-axis-0',
+                                                value: (talla) * 18.5,
+                                                borderColor: 'rgb(255, 99, 132)',
+                                                borderWidth: 2,
+                                                label: {
+                                                    enabled: true,
+                                                    content: 'Peso mínimo'
+                                                }
+
+                                            },
+                                            {
+                                                type: 'line',
+                                                mode: 'horizontal',
+                                                scaleID: 'y-axis-0',
+                                                value: (talla) * 24.9,
+                                                borderColor: 'rgb(255,0,0)',
+                                                borderWidth: 2,
+                                                label: {
+                                                    enabled: true,
+                                                    content: 'Peso máximo aceptable'
+                                                }
+
+                                            }
+                                        ]
+                                    },
                                     /*scale: {
                                         ticks: {
                                             beginAtZero: true,
