@@ -20,6 +20,14 @@
 </head>
 <body>
 
+    <style>
+        .caja {
+            font-family: sans-serif;
+            font-size: 18px;
+            margin: 80px;
+        }
+    </style>
+
     <center>
         <h1>Dashboard</h1>
     </center>
@@ -32,6 +40,7 @@
         <option value="12">Gloria Sepúlveda Romero</option>
         <option value="13">Olga Hernández Rivera</option>
         <option value="14">Patricio Ibáñez Gatica</option>
+        <option value="15">Esteban Alarcón Nuñez</option>
 
     </select>
     <table id="rblChartType" border="0">
@@ -50,7 +59,7 @@
             <td width="700">
                 <div id="dvChart">
                 </div>
-
+                <div id="dvMensaje2" align="center"></div>
             </td>
 
         </tr>
@@ -59,14 +68,6 @@
 
 
     <h3>Promedio pacientes nutrición</h3>
-
-    <style>
-        .caja {
-            font-family: sans-serif;
-            font-size: 18px;
-            margin: 80px;
-        }
-    </style>
 
     Género:
     <select id="ddlGenero">
@@ -201,6 +202,19 @@
                 dataType: "text",
                 success: function (response) {
                     $("#dvChart").html("");
+
+                    $("#dvMensaje2").html("");
+                    //$("#dvTabla").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') {
+                        var div = $("<div />");
+                        //div.css("font-size", "18px");
+                        div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
+                        $("#dvMensaje2").append(div);
+                    };
+
+
                     //$("#dvLegend").html("");
                     //$("#dvTabla").html("");
                     var data = eval(response);
@@ -351,7 +365,7 @@
 
     </script>
 
-    
+
     <script type="text/javascript">
 
         $(function () {
