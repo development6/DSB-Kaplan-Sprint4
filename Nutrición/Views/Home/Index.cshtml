@@ -117,7 +117,7 @@
             <td width="800" align="center">
                 <table border=1 cellspacing="0">
                     <tr>
-                        <th colspan="2">CSF</th>
+                        <th colspan="2">Total de pacientes graficados</th>
                     </tr>
                     <tr>
                         <td>
@@ -217,12 +217,12 @@
                 dataType: "text",
                 success: function (response) {
                     $("#dvChart").html("");
-
+                    
                     $("#dvMensaje2").html("");
                     //$("#dvTabla").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') {
+                    if (response[9] == ',') { //response[17]==','
                         var div = $("<div />");
                         //div.css("font-size", "18px");
                         div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
@@ -440,21 +440,23 @@
 
                     $("#dvChart2").html("");
                     $("#dvMensaje").html("");
-                    //$("#dvTabla").html("");
+                    $("#dvTabla").html("");
 
+                    var suma = 0;
                     //window.alert(response);
                     if (response[9] == ',') {
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
                         $("#dvMensaje").append(div2);
+                        $("#dvTabla").append(suma);
                     };
 
                     //window.alert(response[9]);
 
                     /*----------------------------------*/
                     var data = eval(response);
-
+                    
                     //var data = (eval("(" + response.d + ")"));
                     var el = document.createElement('canvas');
                     $("#dvChart2")[0].appendChild(el);
@@ -466,11 +468,14 @@
                         G_vmlCanvasManager.initElement(el);
                     }
 
+                    var cantidad_personas = [];
+
                     for (var i = 0; i < data.length; i++) {
                         ingreso.push(data[i].value0, data[i].value1, data[i].value2, data[i].value3, data[i].value4, data[i].value5, data[i].value6, data[i].value7, data[i].value8);
                         egreso.push(data[i].value9, data[i].value10, data[i].value11, data[i].value12, data[i].value13, data[i].value14, data[i].value15, data[i].value16, data[i].value17);
+                        cantidad_personas.push(data[i].value18);
                     }
-
+                    $("#dvTabla").append(cantidad_personas);
 
                     //console.log(ingreso);
                     //window.alert(ingreso);

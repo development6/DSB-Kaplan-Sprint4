@@ -110,7 +110,7 @@ namespace Nutrición.Controllers
                             sb.Append("{");
                             System.Threading.Thread.Sleep(50);
                             string color = String.Format("#{0:X6}", new Random().Next(0x1000000));
-                            sb.Append(string.Format("value0:{0},value1:{1},value2:{2},value3:{3},value4:{4},value5:{5},value6:{6},value7:{7},value8:{8},value9:{9},value10:{10},value11:{11},value12:{12},value13:{13},value14:{14},value15:{15},value16:{16},value17:{17}", sdr[0], sdr[1], sdr[2], sdr[3], sdr[4], sdr[5], sdr[6], sdr[7], sdr[8], sdr[9], sdr[10], sdr[11], sdr[12], sdr[13], sdr[14], sdr[15], sdr[16], sdr[17]));
+                            sb.Append(string.Format("value0:{0},value1:{1},value2:{2},value3:{3},value4:{4},value5:{5},value6:{6},value7:{7},value8:{8},value9:{9},value10:{10},value11:{11},value12:{12},value13:{13},value14:{14},value15:{15},value16:{16},value17:{17},value18:{18}", sdr[0], sdr[1], sdr[2], sdr[3], sdr[4], sdr[5], sdr[6], sdr[7], sdr[8], sdr[9], sdr[10], sdr[11], sdr[12], sdr[13], sdr[14], sdr[15], sdr[16], sdr[17], sdr[18]));
                             sb.Append("},");
                         }
 
