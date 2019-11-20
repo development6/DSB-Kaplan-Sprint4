@@ -154,12 +154,12 @@
     <table border="0" cellpadding="0" cellspacing="0">
 
         <tr>
-            <td width="700">
+            <td width="400">
                 <div id="dvChartProKG">
                 </div>
                 <div id="dvMensajeProKG" align="center"></div>
             </td>
-            <td width="700">
+            <td width="400">
                 <div id="dvChartProMG">
                 </div>
                 <div id="dvMensajeProMG" align="center"></div>
@@ -172,7 +172,6 @@
                     <tr>
                         <td>
                             <div id="dvTabla" align="center"></div>
-
                         </td>
                     </tr>
                     <tr></tr>
@@ -180,12 +179,12 @@
             </td>
         </tr>
         <tr>
-            <td width="700">
+            <td width="400">
                 <div id="dvChartProNivel">
                 </div>
                 <div id="dvMensajeProNivel" align="center"></div>
             </td>
-            <td width="700">
+            <td width="400">
                 <div id="dvChartProIndice">
                 </div>
                 <div id="dvMensajeProIndice" align="center"></div>
@@ -193,12 +192,12 @@
 
         </tr>
         <tr>
-            <td width="700">
+            <td width="400">
                 <div id="dvChartProCintura">
                 </div>
                 <div id="dvMensajeProCintura" align="center"></div>
             </td>
-            <td width="700">
+            <td width="400">
                 <div id="dvChartProPeso">
                 </div>
                 <div id="dvMensajeProPeso" align="center"></div>
@@ -206,12 +205,12 @@
 
         </tr>
         <tr>
-            <td width="700">
+            <td width="400">
                 <div id="dvChartProTalla">
                 </div>
                 <div id="dvMensajeProTalla" align="center"></div>
             </td>
-            <td width="700">
+            <td width="400">
                 <div id="dvChartProIMC">
                 </div>
                 <div id="dvMensajeProIMC" align="center"></div>
@@ -221,32 +220,7 @@
     </table>
 
 
-    <!--<table border="0" cellpadding="0" cellspacing="0">
-
-        <tr>
-            <td>
-                Paciente:
-                <select id="ddlPaciente">
-                    <option value="1">Paciente</option>
-
-                </select>
-                <table id="rblChartType" border="0">
-                    <tr>
-                        <td><input type="radio" name="ChartType" value="1" checked="checked" />Bar</td>
-                        <td><input type="radio" name="ChartType" value="2" />Radar</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div id="dvChart">
-                </div>
-            </td>
-
-        </tr>
-        <tr></tr>
-    </table>-->
+    
 
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -388,6 +362,10 @@
                                                     beginAtZero: true,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Kg'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -533,6 +511,10 @@
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
                                                 },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Porcentaje(%)'
+                                                },
                                                 gridLines: {
                                                     //drawTicks: false,
                                                     //display: false,
@@ -670,6 +652,7 @@
                                                     //fontColor: "#556F7B",
                                                     //fontStyle: "bold",
                                                     beginAtZero: true,
+                                                    suggestedMax: 20,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
                                                 },
@@ -953,6 +936,10 @@
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
                                                 },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Cms'
+                                                },
                                                 gridLines: {
                                                     //drawTicks: false,
                                                     //display: false,
@@ -1118,7 +1105,6 @@
                                     scales: {
                                         xAxes: [{
                                             barPercentage: 0.4,
-                                            suggestedMax: 150
                                         }],
                                         yAxes: [
                                             {
@@ -1129,6 +1115,10 @@
                                                     beginAtZero: true,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Kg'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -1271,6 +1261,10 @@
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
                                                 },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Mts'
+                                                },
                                                 gridLines: {
                                                     //drawTicks: false,
                                                     //display: false,
@@ -1411,6 +1405,10 @@
                                                     beginAtZero: true,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Kg/mts²'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -1646,6 +1644,9 @@
                                         text: "Promedio KG"
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.6
+                                        }],
                                         yAxes: [
                                             {
                                                 ticks: {
@@ -1655,6 +1656,10 @@
                                                     beginAtZero: true,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Kg'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -1790,9 +1795,12 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Promedio MG"
+                                        text: "Promedio %MG"
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
                                         yAxes: [
                                             {
                                                 ticks: {
@@ -1802,6 +1810,10 @@
                                                     beginAtZero: true,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Porcentaje(%)'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -1821,7 +1833,7 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Promedio MG"
+                                        text: "Promedio %MG"
                                     }
                                 }
                             });
@@ -1939,6 +1951,9 @@
                                         text: "Promedio Nivel GV"
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
                                         yAxes: [
                                             {
                                                 ticks: {
@@ -1946,6 +1961,7 @@
                                                     //fontColor: "#556F7B",
                                                     //fontStyle: "bold",
                                                     beginAtZero: true,
+                                                    suggestedMax: 20,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
                                                 },
@@ -2086,6 +2102,9 @@
                                         text: "Promedio Indice"
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
                                         yAxes: [
                                             {
                                                 ticks: {
@@ -2141,7 +2160,7 @@
             var ingresoProCintura = [];
             var egresoProCintura = [];
             var datachart2 = {
-                labels: ["Promedio Perímetro Cintura"],
+                labels: ["Promedio P.Cintura"],
                 datasets: [
                     {
                         label: "Ingreso",
@@ -2232,6 +2251,9 @@
                                         text: "Promedio Perímetro Cintura"
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
                                         yAxes: [
                                             {
                                                 ticks: {
@@ -2241,6 +2263,10 @@
                                                     beginAtZero: true,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Cms'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -2378,6 +2404,9 @@
                                         text: "Promedio Peso"
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
                                         yAxes: [
                                             {
                                                 ticks: {
@@ -2387,6 +2416,10 @@
                                                     beginAtZero: true,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Kg'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -2521,9 +2554,12 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Promedio Talla"
+                                        text: "Grafico Promedio Talla"
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
                                         yAxes: [
                                             {
                                                 ticks: {
@@ -2531,8 +2567,14 @@
                                                     //fontColor: "#556F7B",
                                                     //fontStyle: "bold",
                                                     beginAtZero: true,
+                                                    suggestedMax: 2.5,
+                                                    stepSize: 0.5
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Mts'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -2552,12 +2594,16 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Promedio Talla"
-                                    }
+                                        text: "Gráfico Promedio Talla"
+                                    },
+                                    /*scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        }
+                                    }*/
                                 }
                             });
                             break;
-
 
                     }
 
@@ -2579,7 +2625,7 @@
             var ingresoProIMC = [];
             var egresoProIMC = [];
             var datachart2 = {
-                labels: ["Promedio Indice de Masa Corporal"],
+                labels: ["Promedio IMC"],
                 datasets: [
                     {
                         label: "Ingreso",
@@ -2667,9 +2713,12 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Promedio IMC"
+                                        text: "Grafico Promedio IMC"
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
                                         yAxes: [
                                             {
                                                 ticks: {
@@ -2679,6 +2728,10 @@
                                                     beginAtZero: true,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Kg/mts²'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -2698,12 +2751,16 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Promedio IMC"
-                                    }
+                                        text: "Gráfico Promedio IMC"
+                                    },
+                                    /*scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        }
+                                    }*/
                                 }
                             });
                             break;
-
 
                     }
 
