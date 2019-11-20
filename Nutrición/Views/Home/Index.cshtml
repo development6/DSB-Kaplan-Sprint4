@@ -154,12 +154,17 @@
     <table border="0" cellpadding="0" cellspacing="0">
 
         <tr>
-            <td width="800">
-                <div id="dvChart2">
+            <td width="700">
+                <div id="dvChartProKG">
                 </div>
-                <div id="dvMensaje" align="center"></div>
+                <div id="dvMensajeProKG" align="center"></div>
             </td>
-            <td width="800" align="center">
+            <td width="700">
+                <div id="dvChartProMG">
+                </div>
+                <div id="dvMensajeProMG" align="center"></div>
+            </td>
+            <td width="700" align="center">
                 <table border=1 cellspacing="0">
                     <tr>
                         <th colspan="2">Total de pacientes graficados</th>
@@ -170,11 +175,48 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        
-                    </tr>
+                    <tr></tr>
                 </table>
             </td>
+        </tr>
+        <tr>
+            <td width="700">
+                <div id="dvChartProNivel">
+                </div>
+                <div id="dvMensajeProNivel" align="center"></div>
+            </td>
+            <td width="700">
+                <div id="dvChartProIndice">
+                </div>
+                <div id="dvMensajeProIndice" align="center"></div>
+            </td>
+
+        </tr>
+        <tr>
+            <td width="700">
+                <div id="dvChartProCintura">
+                </div>
+                <div id="dvMensajeProCintura" align="center"></div>
+            </td>
+            <td width="700">
+                <div id="dvChartProPeso">
+                </div>
+                <div id="dvMensajeProPeso" align="center"></div>
+            </td>
+
+        </tr>
+        <tr>
+            <td width="700">
+                <div id="dvChartProTalla">
+                </div>
+                <div id="dvMensajeProTalla" align="center"></div>
+            </td>
+            <td width="700">
+                <div id="dvChartProIMC">
+                </div>
+                <div id="dvMensajeProIMC" align="center"></div>
+            </td>
+
         </tr>
     </table>
 
@@ -1475,22 +1517,41 @@
 
         $(function () {
             LoadChart9();
-            /*$("#ddlGenero1", "#ddlRiesgo2", "#ddlFecha1").bind("change", function () {
-                LoadChart2();
-            });*/
+            LoadChart10();
+            LoadChart11();
+            LoadChart12();
+            LoadChart13();
+            LoadChart14();
+            LoadChart15();
+            LoadChart16();
+            
             $("#button").on("click", function () {
                 LoadChart9();
+                LoadChart10();
+                LoadChart11();
+                LoadChart12();
+                LoadChart13();
+                LoadChart14();
+                LoadChart15();
+                LoadChart16();
             });
             $("#rblChartType2 input").bind("click", function () {
                 LoadChart9();
+                LoadChart10();
+                LoadChart11();
+                LoadChart12();
+                LoadChart13();
+                LoadChart14();
+                LoadChart15();
+                LoadChart16();
             });
         });
         function LoadChart9() {
             var chartType2 = parseInt($("#rblChartType2 input:checked").val());
-            var ingreso = [];
-            var egreso = [];
+            var ingresoProKG = [];
+            var egresoProKG = [];
             var datachart2 = {
-                labels: ["KG MUSC", "KG Grasa", "%MG", "Nivel GV", "Indice", "P.Cintura", "Peso", "Talla", "IMC"],
+                labels: ["KG MUSC", "KG Grasa"],
                 datasets: [
                     {
                         label: "Ingreso",
@@ -1499,7 +1560,7 @@
                         borderWidth: 1,
                         hoverBackgroundColor: "rgba(151,187,205,1)",
                         hoverBorderColor: "rgba(151,187,205,0.5)",
-                        data: ingreso
+                        data: ingresoProKG
                     },
                     {
                         label: "Egreso",
@@ -1508,7 +1569,7 @@
                         borderWidth: 1,
                         hoverBackgroundColor: "rgba(220,220,220,1)",
                         hoverBorderColor: "rgba(220,220,220,0.5)",
-                        data: egreso
+                        data: egresoProKG
                     }
                 ]
             };
@@ -1528,8 +1589,8 @@
                     //window.alert("H");
 
 
-                    $("#dvChart2").html("");
-                    $("#dvMensaje").html("");
+                    $("#dvChartProKG").html("");
+                    $("#dvMensajeProKG").html("");
                     $("#dvTabla").html("");
 
                     var suma = 0;
@@ -1538,7 +1599,7 @@
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
-                        $("#dvMensaje").append(div2);
+                        $("#dvMensajeProKG").append(div2);
                         $("#dvTabla").append(suma);
                     };
 
@@ -1549,7 +1610,7 @@
                     
                     //var data = (eval("(" + response.d + ")"));
                     var el = document.createElement('canvas');
-                    $("#dvChart2")[0].appendChild(el);
+                    $("#dvChartProKG")[0].appendChild(el);
 
                     //window.alert("hola");
                     //window.alert(data);
@@ -1561,8 +1622,8 @@
                     var cantidad_personas = [];
 
                     for (var i = 0; i < data.length; i++) {
-                        ingreso.push(data[i].value0, data[i].value1, data[i].value2, data[i].value3, data[i].value4, data[i].value5, data[i].value6, data[i].value7, data[i].value8);
-                        egreso.push(data[i].value9, data[i].value10, data[i].value11, data[i].value12, data[i].value13, data[i].value14, data[i].value15, data[i].value16, data[i].value17);
+                        ingresoProKG.push(data[i].value0, data[i].value1);
+                        egresoProKG.push(data[i].value9, data[i].value10);
                         cantidad_personas.push(data[i].value18);
                     }
                     $("#dvTabla").append(cantidad_personas);
@@ -1582,7 +1643,7 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "promedio"
+                                        text: "Promedio KG"
                                     },
                                     scales: {
                                         yAxes: [
@@ -1613,7 +1674,1031 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "promedio"
+                                        text: "Promedio KG"
+                                    }
+                                }
+                            });
+                            break;
+
+
+                    }
+
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+
+
+        }
+
+
+
+        function LoadChart10() {
+            var chartType2 = parseInt($("#rblChartType2 input:checked").val());
+            var ingresoProMG = [];
+            var egresoProMG = [];
+            var datachart2 = {
+                labels: ["Promedio %MG"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoProMG
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)",
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoProMG
+                    }
+                ]
+            };
+            var genero = $("#ddlGenero").val();
+            var control = $("#ddlControl").val();
+            var morbidos = $("#ddlMorbidos").val();
+            var fecha = $("#ddlFecha").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod2",
+                data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
+                //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    //window.alert("H");
+
+
+                    $("#dvChartProMG").html("");
+                    $("#dvMensajeProMG").html("");
+                  
+                    //window.alert(response);
+                    if (response[9] == ',') {
+                        var div2 = $("<div />");
+                        //div.css("font-size", "18px");
+                        div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
+                        $("#dvMensajeProMG").append(div2);
+                        
+                    };
+
+                    //window.alert(response[9]);
+
+                    /*----------------------------------*/
+                    var data = eval(response);
+
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartProMG")[0].appendChild(el);
+
+                    //window.alert("hola");
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+                    
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoProMG.push(data[i].value2);
+                        egresoProMG.push(data[i].value11);
+                        
+                    }
+                    
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+
+                    switch (chartType2) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio MG"
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio MG"
+                                    }
+                                }
+                            });
+                            break;
+
+
+                    }
+
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+
+
+        }
+
+
+        function LoadChart11() {
+            var chartType2 = parseInt($("#rblChartType2 input:checked").val());
+            var ingresoProNivel = [];
+            var egresoProNivel = [];
+            var datachart2 = {
+                labels: ["Promedio Nivel GV"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoProNivel
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)",
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoProNivel
+                    }
+                ]
+            };
+            var genero = $("#ddlGenero").val();
+            var control = $("#ddlControl").val();
+            var morbidos = $("#ddlMorbidos").val();
+            var fecha = $("#ddlFecha").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod2",
+                data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
+                //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    //window.alert("H");
+
+
+                    $("#dvChartProNivel").html("");
+                    $("#dvMensajeProNivel").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') {
+                        var div2 = $("<div />");
+                        //div.css("font-size", "18px");
+                        div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
+                        $("#dvMensajeProNivel").append(div2);
+
+                    };
+
+                    //window.alert(response[9]);
+
+                    /*----------------------------------*/
+                    var data = eval(response);
+
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartProNivel")[0].appendChild(el);
+
+                    //window.alert("hola");
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoProNivel.push(data[i].value3);
+                        egresoProNivel.push(data[i].value12);
+
+                    }
+
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+
+                    switch (chartType2) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Nivel GV"
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Nivel GV"
+                                    }
+                                }
+                            });
+                            break;
+
+
+                    }
+
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+
+
+        }
+
+
+
+        function LoadChart12() {
+            var chartType2 = parseInt($("#rblChartType2 input:checked").val());
+            var ingresoProIndice = [];
+            var egresoProIndice = [];
+            var datachart2 = {
+                labels: ["Promedio Indice"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoProIndice
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)",
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoProIndice
+                    }
+                ]
+            };
+            var genero = $("#ddlGenero").val();
+            var control = $("#ddlControl").val();
+            var morbidos = $("#ddlMorbidos").val();
+            var fecha = $("#ddlFecha").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod2",
+                data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
+                //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    //window.alert("H");
+
+
+                    $("#dvChartProIndice").html("");
+                    $("#dvMensajeProIndice").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') {
+                        var div2 = $("<div />");
+                        //div.css("font-size", "18px");
+                        div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
+                        $("#dvMensajeProIndice").append(div2);
+
+                    };
+
+                    //window.alert(response[9]);
+
+                    /*----------------------------------*/
+                    var data = eval(response);
+
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartProIndice")[0].appendChild(el);
+
+                    //window.alert("hola");
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoProIndice.push(data[i].value4);
+                        egresoProIndice.push(data[i].value13);
+
+                    }
+
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+
+                    switch (chartType2) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Indice"
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Indice"
+                                    }
+                                }
+                            });
+                            break;
+
+
+                    }
+
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+
+
+        }
+
+
+
+
+        function LoadChart13() {
+            var chartType2 = parseInt($("#rblChartType2 input:checked").val());
+            var ingresoProCintura = [];
+            var egresoProCintura = [];
+            var datachart2 = {
+                labels: ["Promedio Perímetro Cintura"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoProCintura
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)",
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoProCintura
+                    }
+                ]
+            };
+            var genero = $("#ddlGenero").val();
+            var control = $("#ddlControl").val();
+            var morbidos = $("#ddlMorbidos").val();
+            var fecha = $("#ddlFecha").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod2",
+                data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
+                //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    //window.alert("H");
+
+
+                    $("#dvChartProCintura").html("");
+                    $("#dvMensajeProCintura").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') {
+                        var div2 = $("<div />");
+                        //div.css("font-size", "18px");
+                        div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
+                        $("#dvMensajeProCintura").append(div2);
+
+                    };
+
+                    //window.alert(response[9]);
+
+                    /*----------------------------------*/
+                    var data = eval(response);
+
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartProCintura")[0].appendChild(el);
+
+                    //window.alert("hola");
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+                    
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoProCintura.push(data[i].value5);
+                        egresoProCintura.push(data[i].value14);
+                    }
+
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+
+                    switch (chartType2) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Perímetro Cintura"
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Perímetro Cintura"
+                                    }
+                                }
+                            });
+                            break;
+
+
+                    }
+
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+
+
+        }
+
+
+
+
+        function LoadChart14() {
+            var chartType2 = parseInt($("#rblChartType2 input:checked").val());
+            var ingresoProPeso = [];
+            var egresoProPeso = [];
+            var datachart2 = {
+                labels: ["Promedio Peso"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoProPeso
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)",
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoProPeso
+                    }
+                ]
+            };
+            var genero = $("#ddlGenero").val();
+            var control = $("#ddlControl").val();
+            var morbidos = $("#ddlMorbidos").val();
+            var fecha = $("#ddlFecha").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod2",
+                data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
+                //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    //window.alert("H");
+
+
+                    $("#dvChartProPeso").html("");
+                    $("#dvMensajeProPeso").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') {
+                        var div2 = $("<div />");
+                        //div.css("font-size", "18px");
+                        div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
+                        $("#dvMensajeProPeso").append(div2);
+
+                    };
+
+                    //window.alert(response[9]);
+
+                    /*----------------------------------*/
+                    var data = eval(response);
+
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartProPeso")[0].appendChild(el);
+
+                    //window.alert("hola");
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoProPeso.push(data[i].value6);
+                        egresoProPeso.push(data[i].value15);
+                    }
+
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+
+                    switch (chartType2) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Peso"
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Peso"
+                                    }
+                                }
+                            });
+                            break;
+
+
+                    }
+
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+
+
+        }
+
+
+
+
+        function LoadChart15() {
+            var chartType2 = parseInt($("#rblChartType2 input:checked").val());
+            var ingresoProTalla = [];
+            var egresoProTalla = [];
+            var datachart2 = {
+                labels: ["Promedio Talla"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoProTalla
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)",
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoProTalla
+                    }
+                ]
+            };
+            var genero = $("#ddlGenero").val();
+            var control = $("#ddlControl").val();
+            var morbidos = $("#ddlMorbidos").val();
+            var fecha = $("#ddlFecha").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod2",
+                data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
+                //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    //window.alert("H");
+
+
+                    $("#dvChartProTalla").html("");
+                    $("#dvMensajeProTalla").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') {
+                        var div2 = $("<div />");
+                        //div.css("font-size", "18px");
+                        div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
+                        $("#dvMensajeProTalla").append(div2);
+
+                    };
+
+                    //window.alert(response[9]);
+
+                    /*----------------------------------*/
+                    var data = eval(response);
+
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartProTalla")[0].appendChild(el);
+
+                    //window.alert("hola");
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoProTalla.push(data[i].value7);
+                        egresoProTalla.push(data[i].value16);
+                    }
+
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+
+                    switch (chartType2) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Talla"
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio Talla"
+                                    }
+                                }
+                            });
+                            break;
+
+
+                    }
+
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+
+
+        }
+
+
+
+
+        function LoadChart16() {
+            var chartType2 = parseInt($("#rblChartType2 input:checked").val());
+            var ingresoProIMC = [];
+            var egresoProIMC = [];
+            var datachart2 = {
+                labels: ["Promedio Indice de Masa Corporal"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoProIMC
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)",
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoProIMC
+                    }
+                ]
+            };
+            var genero = $("#ddlGenero").val();
+            var control = $("#ddlControl").val();
+            var morbidos = $("#ddlMorbidos").val();
+            var fecha = $("#ddlFecha").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod2",
+                data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
+                //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    //window.alert("H");
+
+
+                    $("#dvChartProIMC").html("");
+                    $("#dvMensajeProIMC").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') {
+                        var div2 = $("<div />");
+                        //div.css("font-size", "18px");
+                        div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
+                        $("#dvMensajeProIMC").append(div2);
+
+                    };
+
+                    //window.alert(response[9]);
+
+                    /*----------------------------------*/
+                    var data = eval(response);
+
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartProIMC")[0].appendChild(el);
+
+                    //window.alert("hola");
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoProIMC.push(data[i].value8);
+                        egresoProIMC.push(data[i].value17);
+                    }
+
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+
+                    switch (chartType2) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio IMC"
+                                    },
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart2,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Promedio IMC"
                                     }
                                 }
                             });
