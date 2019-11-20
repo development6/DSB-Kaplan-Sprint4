@@ -36,9 +36,9 @@
 
     Paciente:
     <select id="ddlPaciente">
-        <option value="11">Andrés Soto Díaz</option>
+        <option value="11">Olga Soto Díaz</option>
         <option value="12">Gloria Sepúlveda Romero</option>
-        <option value="13">Olga Hernández Rivera</option>
+        <option value="13">Andrés Hernández Rivera</option>
         <option value="14">Patricio Ibáñez Gatica</option>
         <option value="15">Esteban Alarcón Nuñez</option>
 
@@ -56,10 +56,55 @@
     <table border="0" cellpadding="0" cellspacing="0">
 
         <tr>
-            <td width="700">
-                <div id="dvChart">
+            <td width="400">
+                <div id="dvChartKG">
                 </div>
-                <div id="dvMensaje2" align="center"></div>
+                <div id="dvMensajeKG" align="center"></div>
+            </td>
+            <td width="400">
+                <div id="dvChartMG">
+                </div>
+                <div id="dvMensajeMG" align="center"></div>
+            </td>
+            
+
+        </tr>
+        <tr>
+            <td width="400">
+                <div id="dvChartNivelGV">
+                </div>
+                <div id="dvMensajeNivelGV" align="center"></div>
+            </td>
+            <td>
+                <div id="dvChartIndice">
+                </div>
+                <div id="dvMensajeIndice" align="center"></div>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div id="dvChartCintura">
+                </div>
+                <div id="dvMensajeCintura" align="center"></div>
+            </td>
+            <td>
+                <div id="dvChartPeso">
+                </div>
+                <div id="dvMensajePeso" align="center"></div>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div id="dvChartTalla">
+                </div>
+                <div id="dvMensajeTalla" align="center"></div>
+            </td>
+            <td>
+                <div id="dvChartIMC">
+                </div>
+                <div id="dvMensajeIMC" align="center"></div>
             </td>
 
         </tr>
@@ -175,19 +220,40 @@
     <script type="text/javascript">
         $(function () {
             LoadChart();
+            LoadChart2();
+            LoadChart3();
+            LoadChart4();
+            LoadChart5();
+            LoadChart6();
+            LoadChart7();
+            LoadChart8();
             $("#ddlPaciente").bind("change", function () {
                 LoadChart();
+                LoadChart2();
+                LoadChart3();
+                LoadChart4();
+                LoadChart5();
+                LoadChart6();
+                LoadChart7();
+                LoadChart8();
             });
             $("#rblChartType input").bind("click", function () {
                 LoadChart();
+                LoadChart2();
+                LoadChart3();
+                LoadChart4();
+                LoadChart5();
+                LoadChart6();
+                LoadChart7();
+                LoadChart8();
             });
         });
         function LoadChart() {
             var chartType = parseInt($("#rblChartType input:checked").val());
-            var ingreso = [];
-            var egreso = [];
+            var ingresoKG = [];
+            var egresoKG = [];
             var datachart = {
-                labels: ["KG MUSC", "KG Grasa", "%MG", "Nivel GV", "Indice", "P.Cintura", "Peso", "Talla", "IMC"],
+                labels: ["KG MUSC", "KG Grasa"],
                 datasets: [
                     {
                         label: "Ingreso",
@@ -196,16 +262,16 @@
                         borderWidth: 1,
                         hoverBackgroundColor: "rgba(151,187,205,1)",
                         hoverBorderColor: "rgba(151,187,205,0.5)",
-                        data: ingreso
+                        data: ingresoKG
                     },
                     {
                         label: "Egreso",
-                        backgroundColor: "rgba(215,220,67,0.3)",
+                        backgroundColor: "rgba(215,220,67,0.3)", //rgba(150,236,136,0.7)
                         borderColor: "rgba(220,220,220,0.7)",
                         borderWidth: 1,
                         hoverBackgroundColor: "rgba(220,220,220,1)",
                         hoverBorderColor: "rgba(220,220,220,0.5)",
-                        data: egreso
+                        data: egresoKG
                     }
                 ]
             };
@@ -216,9 +282,9 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
                 success: function (response) {
-                    $("#dvChart").html("");
+                    $("#dvChartKG").html("");
                     
-                    $("#dvMensaje2").html("");
+                    $("#dvMensajeKG").html("");
                     //$("#dvTabla").html("");
 
                     //window.alert(response);
@@ -226,7 +292,7 @@
                         var div = $("<div />");
                         //div.css("font-size", "18px");
                         div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
-                        $("#dvMensaje2").append(div);
+                        $("#dvMensajeKG").append(div);
                     };
 
 
@@ -235,7 +301,7 @@
                     var data = eval(response);
                     //var data = (eval("(" + response.d + ")"));
                     var el = document.createElement('canvas');
-                    $("#dvChart")[0].appendChild(el);
+                    $("#dvChartKG")[0].appendChild(el);
 
 
                     //window.alert(data);
@@ -245,14 +311,14 @@
                     }
 
                     for (var i = 0; i < data.length; i++) {
-                        ingreso.push(data[i].value0, data[i].value1, data[i].value2, data[i].value3, data[i].value4, data[i].value5, data[i].value6, data[i].value7, data[i].value8);
-                        egreso.push(data[i].value9, data[i].value10, data[i].value11, data[i].value12, data[i].value13, data[i].value14, data[i].value15, data[i].value16, data[i].value17);
+                        ingresoKG.push(data[i].value0, data[i].value1);
+                        egresoKG.push(data[i].value9, data[i].value10);
                     }
 
                     //console.log(ingreso);
                     //window.alert(ingreso);
 
-                    var talla = ingreso[7] * ingreso[7];
+                  
 
                     var ctx = el.getContext('2d');
                     var userStrengthsChart;
@@ -265,40 +331,12 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Grafico"
-                                    },
-                                    annotation: {
-                                        events: ['click', 'dblclick', 'mouseover', 'mouseout'],
-                                        annotations: [
-                                            {
-                                                type: 'line',
-                                                mode: 'horizontal',
-                                                scaleID: 'y-axis-0',
-                                                value: (talla) * 18.5,
-                                                borderColor: 'rgb(255, 99, 132)',
-                                                borderWidth: 2,
-                                                label: {
-                                                    enabled: true,
-                                                    content: 'Peso mínimo'
-                                                }
-
-                                            },
-                                            {
-                                                type: 'line',
-                                                mode: 'horizontal',
-                                                scaleID: 'y-axis-0',
-                                                value: (talla) * 24.9,
-                                                borderColor: 'rgb(255,0,0)',
-                                                borderWidth: 2,
-                                                label: {
-                                                    enabled: true,
-                                                    content: 'Peso máximo aceptable'
-                                                }
-
-                                            }
-                                        ]
+                                        text: "Grafico KG"
                                     },
                                     scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.6
+                                        }],
                                         yAxes: [
                                             {
                                                 ticks: {
@@ -327,38 +365,151 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Grafico"
+                                        text: "Grafico KG"
                                     },
-                                    annotation: {
-                                        events: ['click', 'dblclick', 'mouseover', 'mouseout'],
-                                        annotations: [
-                                            {
-                                                type: 'line',
-                                                mode: 'horizontal',
-                                                scaleID: 'y-axis-0',
-                                                value: (talla) * 18.5,
-                                                borderColor: 'rgb(255, 99, 132)',
-                                                borderWidth: 2,
-                                                label: {
-                                                    enabled: true,
-                                                    content: 'Peso mínimo'
-                                                }
+                                    
+                                    /*scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        }
+                                    }*/
+                                }
+                            });
+                            break;
 
-                                            },
-                                            {
-                                                type: 'line',
-                                                mode: 'horizontal',
-                                                scaleID: 'y-axis-0',
-                                                value: (talla) * 24.9,
-                                                borderColor: 'rgb(255,0,0)',
-                                                borderWidth: 2,
-                                                label: {
-                                                    enabled: true,
-                                                    content: 'Peso máximo aceptable'
-                                                }
+                    }
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
 
+            });
+        }
+
+
+
+
+
+
+
+        function LoadChart2() {
+            var chartType = parseInt($("#rblChartType input:checked").val());
+            var ingresoMG = [];
+            var egresoMG = [];
+            var datachart = {
+                labels: ["%MG"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoMG
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)", //rgba(150,236,136,0.7)
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoMG
+                    }
+                ]
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod",
+                data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    $("#dvChartMG").html("");
+
+                    $("#dvMensajeMG").html("");
+                    //$("#dvTabla").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') { //response[17]==','
+                        var div = $("<div />");
+                        //div.css("font-size", "18px");
+                        div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
+                        $("#dvMensajeMG").append(div);
+                    };
+
+
+                    //$("#dvLegend").html("");
+                    //$("#dvTabla").html("");
+                    var data = eval(response);
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartMG")[0].appendChild(el);
+
+
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoMG.push(data[i].value2);
+                        egresoMG.push(data[i].value11);
+                    }
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+                    
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+                    switch (chartType) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico %MG"
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    suggestedMax: 100
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
                                             }
-                                        ]
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico %MG"
                                     },
                                     /*scale: {
                                         ticks: {
@@ -378,24 +529,963 @@
             });
         }
 
+
+
+
+
+        function LoadChart3() {
+            var chartType = parseInt($("#rblChartType input:checked").val());
+            var ingresoNivelGV = [];
+            var egresoNivelGV = [];
+            var datachart = {
+                labels: ["Nivel GV"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoNivelGV
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)", //rgba(150,236,136,0.7)
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoNivelGV
+                    }
+                ]
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod",
+                data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    $("#dvChartNivelGV").html("");
+
+                    $("#dvMensajeNivelGV").html("");
+                    //$("#dvTabla").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') { //response[17]==','
+                        var div = $("<div />");
+                        //div.css("font-size", "18px");
+                        div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
+                        $("#dvMensajeNivelGV").append(div);
+                    };
+
+
+                    //$("#dvLegend").html("");
+                    //$("#dvTabla").html("");
+                    var data = eval(response);
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartNivelGV")[0].appendChild(el);
+
+
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoNivelGV.push(data[i].value3);
+                        egresoNivelGV.push(data[i].value12);
+                    }
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+                    switch (chartType) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico Nivel GV"
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico Nivel GV"
+                                    },
+                                    /*scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        }
+                                    }*/
+                                }
+                            });
+                            break;
+
+                    }
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+        }
+
+
+
+
+
+
+        function LoadChart4() {
+            var chartType = parseInt($("#rblChartType input:checked").val());
+            var ingresoIndice = [];
+            var egresoIndice = [];
+            var datachart = {
+                labels: ["Indice"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoIndice
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)", //rgba(150,236,136,0.7)
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoIndice
+                    }
+                ]
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod",
+                data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    $("#dvChartIndice").html("");
+
+                    $("#dvMensajeIndice").html("");
+                    //$("#dvTabla").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') { //response[17]==','
+                        var div = $("<div />");
+                        //div.css("font-size", "18px");
+                        div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
+                        $("#dvMensajeIndice").append(div);
+                    };
+
+
+                    //$("#dvLegend").html("");
+                    //$("#dvTabla").html("");
+                    var data = eval(response);
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartIndice")[0].appendChild(el);
+
+
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoIndice.push(data[i].value4);
+                        egresoIndice.push(data[i].value13);
+                    }
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+                    switch (chartType) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico Indice"
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico Indice"
+                                    },
+                                    /*scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        }
+                                    }*/
+                                }
+                            });
+                            break;
+
+                    }
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+        }
+
+
+
+
+        function LoadChart5() {
+            var chartType = parseInt($("#rblChartType input:checked").val());
+            var ingresoCintura = [];
+            var egresoCintura = [];
+            var datachart = {
+                labels: ["P.Cintura"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoCintura
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)", //rgba(150,236,136,0.7)
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoCintura
+                    }
+                ]
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod",
+                data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    $("#dvChartCintura").html("");
+
+                    $("#dvMensajeCintura").html("");
+                    //$("#dvTabla").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') { //response[17]==','
+                        var div = $("<div />");
+                        //div.css("font-size", "18px");
+                        div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
+                        $("#dvMensajeCintura").append(div);
+                    };
+
+
+                    //$("#dvLegend").html("");
+                    //$("#dvTabla").html("");
+                    var data = eval(response);
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartCintura")[0].appendChild(el);
+
+
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoCintura.push(data[i].value5);
+                        egresoCintura.push(data[i].value14);
+                    }
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+                    switch (chartType) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico Perímetro de Cintura"
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Perímetro de Cintura"
+                                    },
+                                    /*scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        }
+                                    }*/
+                                }
+                            });
+                            break;
+
+                    }
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+        }
+
+
+
+
+
+       
+
+
+        function LoadChart6() {
+            var chartType = parseInt($("#rblChartType input:checked").val());
+            var ingresoPeso = [];
+            var egresoPeso = [];
+            var datachart = {
+                labels: ["Peso"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoPeso
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)", //rgba(150,236,136,0.7)
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoPeso
+                    }
+                ]
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod",
+                data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    $("#dvChartPeso").html("");
+
+                    $("#dvMensajePeso").html("");
+                    //$("#dvTabla").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') { //response[17]==','
+                        var div = $("<div />");
+                        //div.css("font-size", "18px");
+                        div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
+                        $("#dvMensajePeso").append(div);
+                    };
+
+
+                    //$("#dvLegend").html("");
+                    //$("#dvTabla").html("");
+                    var data = eval(response);
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartPeso")[0].appendChild(el);
+
+
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+                    var talla=[]
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoPeso.push(data[i].value6);
+                        egresoPeso.push(data[i].value15);
+                        talla.push(data[i].value7);
+                    }
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+                    switch (chartType) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico de Peso"
+                                    },
+                                    annotation: {
+                                        events: ['click', 'dblclick', 'mouseover', 'mouseout'],
+                                        annotations: [
+                                            {
+                                                type: 'line',
+                                                mode: 'horizontal',
+                                                scaleID: 'y-axis-0',
+                                                value: (talla*talla) * 18.5,
+                                                borderColor: 'rgb(255, 99, 132)',
+                                                borderWidth: 2,
+                                                label: {
+                                                    enabled: true,
+                                                    content: 'Peso mínimo'
+                                                }
+
+                                            },
+                                            {
+                                                type: 'line',
+                                                mode: 'horizontal',
+                                                scaleID: 'y-axis-0',
+                                                value: (talla*talla) * 24.9,
+                                                borderColor: 'rgb(255,0,0)',
+                                                borderWidth: 2,
+                                                label: {
+                                                    enabled: true,
+                                                    content: 'Peso máximo aceptable'
+                                                }
+
+                                            }
+                                        ]
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4,
+                                            suggestedMax: 150
+                                        }],
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Gráfico de Peso"
+                                    },
+                                    /*scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        }
+                                    }*/
+                                }
+                            });
+                            break;
+
+                    }
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+        }
+
+
+
+
+        function LoadChart7() {
+            var chartType = parseInt($("#rblChartType input:checked").val());
+            var ingresoTalla = [];
+            var egresoTalla = [];
+            var datachart = {
+                labels: ["Talla"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoTalla
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)", //rgba(150,236,136,0.7)
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoTalla
+                    }
+                ]
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod",
+                data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    $("#dvChartTalla").html("");
+
+                    $("#dvMensajeTalla").html("");
+                    //$("#dvTabla").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') { //response[17]==','
+                        var div = $("<div />");
+                        //div.css("font-size", "18px");
+                        div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
+                        $("#dvMensajeTalla").append(div);
+                    };
+
+
+                    //$("#dvLegend").html("");
+                    //$("#dvTabla").html("");
+                    var data = eval(response);
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartTalla")[0].appendChild(el);
+
+
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoTalla.push(data[i].value7);
+                        egresoTalla.push(data[i].value16);
+                    }
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+                    switch (chartType) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico Talla"
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    suggestedMax: 2.5,
+                                                    stepSize: 0.5
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Gráfico Talla"
+                                    },
+                                    /*scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        }
+                                    }*/
+                                }
+                            });
+                            break;
+
+                    }
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+        }
+
+
+
+
+
+
+        function LoadChart8() {
+            var chartType = parseInt($("#rblChartType input:checked").val());
+            var ingresoIMC = [];
+            var egresoIMC = [];
+            var datachart = {
+                labels: ["IMC"],
+                datasets: [
+                    {
+                        label: "Ingreso",
+                        backgroundColor: "rgba(90,193,208,0.3)",
+                        borderColor: "rgba(151,187,205,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(151,187,205,1)",
+                        hoverBorderColor: "rgba(151,187,205,0.5)",
+                        data: ingresoIMC
+                    },
+                    {
+                        label: "Egreso",
+                        backgroundColor: "rgba(215,220,67,0.3)", //rgba(150,236,136,0.7)
+                        borderColor: "rgba(220,220,220,0.7)",
+                        borderWidth: 1,
+                        hoverBackgroundColor: "rgba(220,220,220,1)",
+                        hoverBorderColor: "rgba(220,220,220,0.5)",
+                        data: egresoIMC
+                    }
+                ]
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Home/AjaxMethod",
+                data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (response) {
+                    $("#dvChartIMC").html("");
+
+                    $("#dvMensajeIMC").html("");
+                    //$("#dvTabla").html("");
+
+                    //window.alert(response);
+                    if (response[9] == ',') { //response[17]==','
+                        var div = $("<div />");
+                        //div.css("font-size", "18px");
+                        div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
+                        $("#dvMensajeIMC").append(div);
+                    };
+
+
+                    //$("#dvLegend").html("");
+                    //$("#dvTabla").html("");
+                    var data = eval(response);
+                    //var data = (eval("(" + response.d + ")"));
+                    var el = document.createElement('canvas');
+                    $("#dvChartIMC")[0].appendChild(el);
+
+
+                    //window.alert(data);
+                    //Fix for IE 8
+                    if ($.browser.msie && $.browser.version == "8.0") {
+                        G_vmlCanvasManager.initElement(el);
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        ingresoIMC.push(data[i].value8);
+                        egresoIMC.push(data[i].value17);
+                    }
+
+                    //console.log(ingreso);
+                    //window.alert(ingreso);
+
+
+                    var ctx = el.getContext('2d');
+                    var userStrengthsChart;
+
+                    switch (chartType) {
+                        case 1:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Grafico IMC"
+                                    },
+                                    scales: {
+                                        xAxes: [{
+                                            barPercentage: 0.4
+                                        }],
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    //fontFamily: "Roboto Mono",
+                                                    //fontColor: "#556F7B",
+                                                    //fontStyle: "bold",
+                                                    beginAtZero: true,
+                                                    //maxTicksLimit: 5,
+                                                    //padding: 20
+                                                },
+                                                gridLines: {
+                                                    //drawTicks: false,
+                                                    //display: false,
+                                                    //drawBorder: false
+                                                }
+                                            }
+                                        ],
+                                    }
+                                }
+                            });
+                            break;
+                        case 2:
+                            userStrengthsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: datachart,
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Gráfico IMC"
+                                    },
+                                    /*scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        }
+                                    }*/
+                                }
+                            });
+                            break;
+
+                    }
+                },
+                failure: function (response) {
+                    alert('Ocurrió un error.');
+                },
+
+            });
+        }
+
+
+
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <script type="text/javascript">
 
         $(function () {
-            LoadChart2();
+            LoadChart9();
             /*$("#ddlGenero1", "#ddlRiesgo2", "#ddlFecha1").bind("change", function () {
                 LoadChart2();
             });*/
             $("#button").on("click", function () {
-                LoadChart2();
+                LoadChart9();
             });
             $("#rblChartType2 input").bind("click", function () {
-                LoadChart2();
+                LoadChart9();
             });
         });
-        function LoadChart2() {
+        function LoadChart9() {
             var chartType2 = parseInt($("#rblChartType2 input:checked").val());
             var ingreso = [];
             var egreso = [];
