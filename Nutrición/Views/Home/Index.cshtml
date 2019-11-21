@@ -137,12 +137,14 @@
     Fecha:
     <select id="ddlFecha">
         <option value="2018-08-29">2018-08-29</option>
+        <option value="2018-10-05">2018-10-05</option>
         <option value="2018-10-16">2018-10-16</option>
         <option value="2018-10-19">2018-10-19</option>
         <option value="2018-11-07">2018-11-07</option>
 
     </select>
     <input id="button" type="button" value="Mostrar" />
+    <font size="4"><strong>Total pacientes: <font size="4" id="dvTabla"></font></strong></font>
     <table id="rblChartType2" border="0">
         <tr>
             <td><input type="radio" name="ChartType2" value="1" checked="checked" />Barra</td>
@@ -164,7 +166,7 @@
                 </div>
                 <div id="dvMensajeProMG" align="center"></div>
             </td>
-            <td width="700" align="center">
+            <!--<td width="700" align="center">
                 <table border=1 cellspacing="0">
                     <tr>
                         <th colspan="2">Total de pacientes graficados</th>
@@ -176,7 +178,7 @@
                     </tr>
                     <tr></tr>
                 </table>
-            </td>
+            </td>-->
         </tr>
         <tr>
             <td width="400">
@@ -325,7 +327,7 @@
                     if ($.browser.msie && $.browser.version == "8.0") {
                         G_vmlCanvasManager.initElement(el);
                     }
-
+                    
                     for (var i = 0; i < data.length; i++) {
                         ingresoKG.push(data[i].value0, data[i].value1);
                         egresoKG.push(data[i].value9, data[i].value10);
@@ -704,7 +706,7 @@
             var ingresoIndice = [];
             var egresoIndice = [];
             var datachart = {
-                labels: ["Indice"],
+                labels: ["ICC"],
                 datasets: [
                     {
                         label: "Ingreso",
@@ -781,7 +783,7 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Grafico Indice"
+                                        text: "Grafico ICC"
                                     },
                                     scales: {
                                         xAxes: [{
@@ -794,8 +796,13 @@
                                                     //fontColor: "#556F7B",
                                                     //fontStyle: "bold",
                                                     beginAtZero: true,
+                                                    suggestedMax: 1.5
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Cms'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
@@ -815,7 +822,7 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Grafico Indice"
+                                        text: "Grafico ICC"
                                     },
                                     /*scale: {
                                         ticks: {
@@ -900,10 +907,13 @@
                         G_vmlCanvasManager.initElement(el);
                     }
 
+                    
                     for (var i = 0; i < data.length; i++) {
                         ingresoCintura.push(data[i].value5);
                         egresoCintura.push(data[i].value14);
+                       
                     }
+                    
 
                     //console.log(ingreso);
                     //window.alert(ingreso);
@@ -911,6 +921,50 @@
 
                     var ctx = el.getContext('2d');
                     var userStrengthsChart;
+
+
+                    /*var temp;
+                    if (sexoPaciente == 2) {
+                        temp.push(annotation: {
+                            events: ['click', 'dblclick', 'mouseover', 'mouseout'],
+                            annotations: [
+                                {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y-axis-0',
+                                    value: 88,
+                                    borderColor: 'rgb(255, 99, 132)',
+                                    borderWidth: 2,
+                                    label: {
+                                        enabled: true,
+                                        content: 'Peso mínimo'
+                                    }
+
+                                }
+                            ]
+                        });
+
+                    }
+                    else if (sexoPaciente == 1) {
+                        temp.push(annotation: {
+                            events: ['click', 'dblclick', 'mouseover', 'mouseout'],
+                            annotations: [
+                                {
+                                    type: 'line',
+                                    mode: 'horizontal',
+                                    scaleID: 'y-axis-0',
+                                    value: 102,
+                                    borderColor: 'rgb(255, 99, 132)',
+                                    borderWidth: 2,
+                                    label: {
+                                        enabled: true,
+                                        content: 'Peso mínimo'
+                                    }
+
+                                }
+                            ]
+                        });
+                    }*/
 
                     switch (chartType) {
                         case 1:
@@ -2009,7 +2063,7 @@
             var ingresoProIndice = [];
             var egresoProIndice = [];
             var datachart2 = {
-                labels: ["Promedio Indice"],
+                labels: ["Promedio ICC"],
                 datasets: [
                     {
                         label: "Ingreso",
@@ -2099,7 +2153,7 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Promedio Indice"
+                                        text: "Promedio ICC"
                                     },
                                     scales: {
                                         xAxes: [{
@@ -2114,6 +2168,10 @@
                                                     beginAtZero: true,
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Cms'
                                                 },
                                                 gridLines: {
                                                     //drawTicks: false,
