@@ -66,7 +66,7 @@
                 </div>
                 <div id="dvMensajeMG" align="center"></div>
             </td>
-            
+
 
         </tr>
         <tr>
@@ -144,7 +144,7 @@
 
     </select>
     <input id="button" type="button" value="Mostrar" />
-    <font size="4"><strong>Total pacientes: <font size="4" id="dvTabla"></font></strong></font>
+    <font size="4"><strong> Total pacientes: <font size="4" id="dvTabla"></font></strong></font>
     <table id="rblChartType2" border="0">
         <tr>
             <td><input type="radio" name="ChartType2" value="1" checked="checked" />Barra</td>
@@ -222,7 +222,7 @@
     </table>
 
 
-    
+
 
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -301,7 +301,7 @@
                 dataType: "text",
                 success: function (response) {
                     $("#dvChartKG").html("");
-                    
+
                     $("#dvMensajeKG").html("");
                     //$("#dvTabla").html("");
 
@@ -327,7 +327,7 @@
                     if ($.browser.msie && $.browser.version == "8.0") {
                         G_vmlCanvasManager.initElement(el);
                     }
-                    
+
                     for (var i = 0; i < data.length; i++) {
                         ingresoKG.push(data[i].value0, data[i].value1);
                         egresoKG.push(data[i].value9, data[i].value10);
@@ -336,7 +336,7 @@
                     //console.log(ingreso);
                     //window.alert(ingreso);
 
-                  
+
 
                     var ctx = el.getContext('2d');
                     var userStrengthsChart;
@@ -389,7 +389,7 @@
                                         display: true,
                                         text: "Grafico KG"
                                     },
-                                    
+
                                     /*scale: {
                                         ticks: {
                                             beginAtZero: true,
@@ -484,7 +484,7 @@
                     //console.log(ingreso);
                     //window.alert(ingreso);
 
-                    
+
                     var ctx = el.getContext('2d');
                     var userStrengthsChart;
 
@@ -907,13 +907,13 @@
                         G_vmlCanvasManager.initElement(el);
                     }
 
-                    
+
                     for (var i = 0; i < data.length; i++) {
                         ingresoCintura.push(data[i].value5);
                         egresoCintura.push(data[i].value14);
-                       
+
                     }
-                    
+
 
                     //console.log(ingreso);
                     //window.alert(ingreso);
@@ -1036,7 +1036,7 @@
 
 
 
-       
+
 
 
         function LoadChart6() {
@@ -1101,7 +1101,7 @@
                         G_vmlCanvasManager.initElement(el);
                     }
 
-                    var talla=[]
+                    var talla = []
                     for (var i = 0; i < data.length; i++) {
                         ingresoPeso.push(data[i].value6);
                         egresoPeso.push(data[i].value15);
@@ -1132,7 +1132,7 @@
                                                 type: 'line',
                                                 mode: 'horizontal',
                                                 scaleID: 'y-axis-0',
-                                                value: (talla*talla) * 18.5,
+                                                value: (talla * talla) * 18.5,
                                                 borderColor: 'rgb(255, 99, 132)',
                                                 borderWidth: 2,
                                                 label: {
@@ -1145,7 +1145,7 @@
                                                 type: 'line',
                                                 mode: 'horizontal',
                                                 scaleID: 'y-axis-0',
-                                                value: (talla*talla) * 24.9,
+                                                value: (talla * talla) * 24.9,
                                                 borderColor: 'rgb(255,0,0)',
                                                 borderWidth: 2,
                                                 label: {
@@ -1576,7 +1576,7 @@
             LoadChart14();
             LoadChart15();
             LoadChart16();
-            
+
             $("#button").on("click", function () {
                 LoadChart9();
                 LoadChart10();
@@ -1659,7 +1659,7 @@
 
                     /*----------------------------------*/
                     var data = eval(response);
-                    
+
                     //var data = (eval("(" + response.d + ")"));
                     var el = document.createElement('canvas');
                     $("#dvChartProKG")[0].appendChild(el);
@@ -1799,15 +1799,15 @@
 
                     $("#dvChartProMG").html("");
                     $("#dvMensajeProMG").html("");
-                  
+
                     //window.alert(response);
-                    if (response[9] == ',') {
+                    /*if (response[9] == ',') {
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
                         $("#dvMensajeProMG").append(div2);
-                        
-                    };
+
+                    };*/
 
                     //window.alert(response[9]);
 
@@ -1825,14 +1825,14 @@
                         G_vmlCanvasManager.initElement(el);
                     }
 
-                    
+
 
                     for (var i = 0; i < data.length; i++) {
                         ingresoProMG.push(data[i].value2);
                         egresoProMG.push(data[i].value11);
-                        
+
                     }
-                    
+
 
                     //console.log(ingreso);
                     //window.alert(ingreso);
@@ -1954,13 +1954,13 @@
                     $("#dvMensajeProNivel").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') {
+                    /*if (response[9] == ',') {
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
                         $("#dvMensajeProNivel").append(div2);
 
-                    };
+                    };*/
 
                     //window.alert(response[9]);
 
@@ -2105,13 +2105,13 @@
                     $("#dvMensajeProIndice").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') {
+                    /*if (response[9] == ',') {
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
                         $("#dvMensajeProIndice").append(div2);
 
-                    };
+                    };*/
 
                     //window.alert(response[9]);
 
@@ -2260,13 +2260,13 @@
                     $("#dvMensajeProCintura").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') {
+                    /*if (response[9] == ',') {
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
                         $("#dvMensajeProCintura").append(div2);
 
-                    };
+                    };*/
 
                     //window.alert(response[9]);
 
@@ -2283,7 +2283,7 @@
                     if ($.browser.msie && $.browser.version == "8.0") {
                         G_vmlCanvasManager.initElement(el);
                     }
-                    
+
 
                     for (var i = 0; i < data.length; i++) {
                         ingresoProCintura.push(data[i].value5);
@@ -2413,13 +2413,13 @@
                     $("#dvMensajeProPeso").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') {
+                    /*if (response[9] == ',') {
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
                         $("#dvMensajeProPeso").append(div2);
 
-                    };
+                    };*/
 
                     //window.alert(response[9]);
 
@@ -2566,13 +2566,13 @@
                     $("#dvMensajeProTalla").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') {
+                    /*if (response[9] == ',') {
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
                         $("#dvMensajeProTalla").append(div2);
 
-                    };
+                    };*/
 
                     //window.alert(response[9]);
 
@@ -2725,13 +2725,13 @@
                     $("#dvMensajeProIMC").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') {
+                    /*if (response[9] == ',') {
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
                         $("#dvMensajeProIMC").append(div2);
 
-                    };
+                    };*/
 
                     //window.alert(response[9]);
 
@@ -2835,6 +2835,75 @@
 
 
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <table border=1 cellspacing="0">
+        <thead>
+            <tr>
+                <th>Indicador</th>
+                <th scope="col" abbr="Starter">Significado</th>
+                <th scope="col" abbr="Medium">Medición</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Kg Musc</th>
+                <td>Kilos de músculos</td>
+                <td>Kilógramos(Kg)</td>
+            </tr>
+            <tr>
+                <th scope="row">Kg Grasa</th>
+                <td>Kilos de grasa</td>
+                <td>Kilógramos(Kg)</td>
+            </tr>
+            <tr>
+                <th scope="row">%MG</th>
+                <td>Porcentaje de masa grasa</td>
+                <td>Porcentaje(%)</td>
+            </tr>
+            <tr>
+                <th scope="row">Nivel GV</th>
+                <td>Nivel de grasa visceral</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">ICC</th>
+                <td>Indice cintura cadera</td>
+                <td>Centímetros(cms)</td>
+            </tr>
+            <tr>
+                <th scope="row">P.Cintura</th>
+                <td>Perímetro de cintura</td>
+                <td>Centímetros(cms)</td>
+            </tr>
+            <tr>
+                <th scope="row">Peso</th>
+                <td></td>
+                <td>Kilógramo(Kg)</td>
+            </tr>
+            <tr>
+                <th scope="row">Talla</th>
+                <td>Estatura de una persona</td>
+                <td>Metros(mts)</td>
+            </tr>
+            <tr>
+                <th scope="row">IMC</th>
+                <td>Indice de masa corporal</td>
+                <td>Kg/mts²</td>
+            </tr>
+        </tbody>
+    </table>
+
 
 
 
