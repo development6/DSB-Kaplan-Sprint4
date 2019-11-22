@@ -76,7 +76,7 @@
                         <tr>
                             <th>Indicador</th>
                             <th>Significado</th>
-                            <th>Medición</th>
+                            <th>Unidad de medida</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1490,12 +1490,12 @@
                     //$("#dvTabla").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') { //response[17]==','
+                    /*if (response[9] == ',') { //response[17]==','
                         var div = $("<div />");
                         //div.css("font-size", "18px");
                         div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
                         $("#dvMensajeIMC").append(div);
-                    };
+                    };*/
 
 
                     //$("#dvLegend").html("");
@@ -1753,13 +1753,13 @@
 
                     var suma = 0;
                     //window.alert(response);
-                    /*if (response[9] == ',') {
+                    if (response[9] == ',') {
                         var div2 = $("<div />");
                         //div.css("font-size", "18px");
                         div2.html("<p class='caja'>No existen pacientes que cumplan con lo solicitado</p>");
                         $("#dvMensajeProKG").append(div2);
                         $("#dvTabla").append(suma);
-                    };*/
+                    };
 
                     //window.alert(response[9]);
 
