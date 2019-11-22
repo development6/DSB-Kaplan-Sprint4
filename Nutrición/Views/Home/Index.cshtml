@@ -41,12 +41,12 @@
         <option value="13">Andrés Hernández Rivera</option>
         <option value="14">Patricio Ibáñez Gatica</option>
         <option value="15">Esteban Alarcón Nuñez</option>
-
+        <option value="16">Alejandro Manzano Navarro</option>
     </select>
     <table id="rblChartType" border="0">
         <tr>
             <td><input type="radio" name="ChartType" value="1" checked="checked" />Barra</td>
-            <td><input type="radio" name="ChartType" value="2" />Lineal</td>
+            <!--<td><input type="radio" name="ChartType" value="2" />Lineal</td>-->
         </tr>
     </table>
     <!--<div id="dvChart" style="width:50%; position:relative;">
@@ -65,6 +65,67 @@
                 <div id="dvChartMG">
                 </div>
                 <div id="dvMensajeMG" align="center"></div>
+            </td>
+            <td>
+                <table border=1 cellspacing="0" width="300" align="center">
+                    <thead>
+                        <tr>
+                            <th colspan="3">Glosa</th>
+                        </tr>
+                        <tr>
+                            <th>Indicador</th>
+                            <th>Significado</th>
+                            <th>Medición</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Kg Musc</th>
+                            <td>Kilos de músculos</td>
+                            <td>Kilógramos(Kg)</td>
+                        </tr>
+                        <tr>
+                            <th>Kg Grasa</th>
+                            <td>Kilos de grasa</td>
+                            <td>Kilógramos(Kg)</td>
+                        </tr>
+                        <tr>
+                            <th>%MG</th>
+                            <td>Porcentaje de masa grasa</td>
+                            <td>Porcentaje(%)</td>
+                        </tr>
+                        <tr>
+                            <th>Nivel GV</th>
+                            <td>Nivel de grasa visceral</td>
+                            <td>Número entero</td>
+                        </tr>
+                        <tr>
+                            <th>ICC</th>
+                            <td>Indice cintura cadera</td>
+                            <td>Centímetros(cms)</td>
+                        </tr>
+                        <tr>
+                            <th>P.Cintura</th>
+                            <td>Perímetro de cintura</td>
+                            <td>Centímetros(cms)</td>
+                        </tr>
+                        <tr>
+                            <th>Peso</th>
+                            <td>Peso</td>
+                            <td>Kilógramo(Kg)</td>
+                        </tr>
+                        <tr>
+                            <th>Talla</th>
+                            <td>Estatura de una persona</td>
+                            <td>Metros(mts)</td>
+                        </tr>
+                        <tr>
+                            <th>IMC</th>
+                            <td>Indice de masa corporal</td>
+                            <td>Kg/mts²</td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
 
 
@@ -148,7 +209,7 @@
     <table id="rblChartType2" border="0">
         <tr>
             <td><input type="radio" name="ChartType2" value="1" checked="checked" />Barra</td>
-            <td><input type="radio" name="ChartType2" value="2" />Lineal</td>
+            <!--<td><input type="radio" name="ChartType2" value="2" />Lineal</td>-->
         </tr>
     </table>
 
@@ -454,12 +515,12 @@
                     //$("#dvTabla").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') { //response[17]==','
+                    /*if (response[9] == ',') { //response[17]==','
                         var div = $("<div />");
                         //div.css("font-size", "18px");
                         div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
                         $("#dvMensajeMG").append(div);
-                    };
+                    };*/
 
 
                     //$("#dvLegend").html("");
@@ -599,12 +660,12 @@
                     //$("#dvTabla").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') { //response[17]==','
+                    /*if (response[9] == ',') { //response[17]==','
                         var div = $("<div />");
                         //div.css("font-size", "18px");
                         div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
                         $("#dvMensajeNivelGV").append(div);
-                    };
+                    };*/
 
 
                     //$("#dvLegend").html("");
@@ -642,6 +703,24 @@
                                     title: {
                                         display: true,
                                         text: "Grafico Nivel GV"
+                                    },
+                                    annotation: {
+                                        events: ['click', 'dblclick', 'mouseover', 'mouseout'],
+                                        annotations: [
+                                            {
+                                                type: 'line',
+                                                mode: 'horizontal',
+                                                scaleID: 'y-axis-0',
+                                                value: 10,
+                                                borderColor: 'rgb(255, 99, 132)',
+                                                borderWidth: 2,
+                                                label: {
+                                                    enabled: true,
+                                                    content: 'Normal:'+10
+                                                }
+
+                                            }
+                                        ]
                                     },
                                     scales: {
                                         xAxes: [{
@@ -741,12 +820,12 @@
                     //$("#dvTabla").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') { //response[17]==','
+                    /*if (response[9] == ',') { //response[17]==','
                         var div = $("<div />");
                         //div.css("font-size", "18px");
                         div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
                         $("#dvMensajeIndice").append(div);
-                    };
+                    };*/
 
 
                     //$("#dvLegend").html("");
@@ -885,12 +964,12 @@
                     //$("#dvTabla").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') { //response[17]==','
+                    /*if (response[9] == ',') { //response[17]==','
                         var div = $("<div />");
                         //div.css("font-size", "18px");
                         div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
                         $("#dvMensajeCintura").append(div);
-                    };
+                    };*/
 
 
                     //$("#dvLegend").html("");
@@ -1079,12 +1158,12 @@
                     //$("#dvTabla").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') { //response[17]==','
+                    /*if (response[9] == ',') { //response[17]==','
                         var div = $("<div />");
                         //div.css("font-size", "18px");
                         div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
                         $("#dvMensajePeso").append(div);
-                    };
+                    };*/
 
 
                     //$("#dvLegend").html("");
@@ -1137,7 +1216,9 @@
                                                 borderWidth: 2,
                                                 label: {
                                                     enabled: true,
-                                                    content: 'Peso mínimo'
+                                                    position: "top",
+                                                    yAdjust: 10,
+                                                    content: 'Peso mín:' + (((talla * talla) * 18.5).toFixed(1))
                                                 }
 
                                             },
@@ -1150,7 +1231,11 @@
                                                 borderWidth: 2,
                                                 label: {
                                                     enabled: true,
-                                                    content: 'Peso máximo aceptable'
+                                                    //backgroundColor: 'rgba(0,0,0,0)',
+                                                    //fontColor: 'black',
+                                                    position: "top",
+                                                    yAdjust: 10,
+                                                    content: 'Peso máx:' + (((talla * talla) * 24.9).toFixed(1))
                                                 }
 
                                             }
@@ -1167,6 +1252,8 @@
                                                     //fontColor: "#556F7B",
                                                     //fontStyle: "bold",
                                                     beginAtZero: true,
+                                                    //suggestedMax: 20,
+                                                    //suggestedMax: 100
                                                     //maxTicksLimit: 5,
                                                     //padding: 20
                                                 },
@@ -1255,12 +1342,12 @@
                     //$("#dvTabla").html("");
 
                     //window.alert(response);
-                    if (response[9] == ',') { //response[17]==','
+                    /*if (response[9] == ',') { //response[17]==','
                         var div = $("<div />");
                         //div.css("font-size", "18px");
                         div.html("<p class='caja'>Este paciente no posee datos para mostrar</p>");
                         $("#dvMensajeTalla").append(div);
-                    };
+                    };*/
 
 
                     //$("#dvLegend").html("");
@@ -1445,6 +1532,24 @@
                                     title: {
                                         display: true,
                                         text: "Grafico IMC"
+                                    },
+                                    annotation: {
+                                        events: ['click', 'dblclick', 'mouseover', 'mouseout'],
+                                        annotations: [
+                                            {
+                                                type: 'line',
+                                                mode: 'horizontal',
+                                                scaleID: 'y-axis-0',
+                                                value: 24.9,
+                                                borderColor: 'rgb(255, 99, 132)',
+                                                borderWidth: 2,
+                                                label: {
+                                                    enabled: true,
+                                                    content: 'Normal:'+24.9
+                                                }
+
+                                            }
+                                        ]
                                     },
                                     scales: {
                                         xAxes: [{
@@ -2835,78 +2940,6 @@
 
 
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-    <table border=1 cellspacing="0">
-        <thead>
-            <tr>
-                <th>Indicador</th>
-                <th scope="col" abbr="Starter">Significado</th>
-                <th scope="col" abbr="Medium">Medición</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Kg Musc</th>
-                <td>Kilos de músculos</td>
-                <td>Kilógramos(Kg)</td>
-            </tr>
-            <tr>
-                <th scope="row">Kg Grasa</th>
-                <td>Kilos de grasa</td>
-                <td>Kilógramos(Kg)</td>
-            </tr>
-            <tr>
-                <th scope="row">%MG</th>
-                <td>Porcentaje de masa grasa</td>
-                <td>Porcentaje(%)</td>
-            </tr>
-            <tr>
-                <th scope="row">Nivel GV</th>
-                <td>Nivel de grasa visceral</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row">ICC</th>
-                <td>Indice cintura cadera</td>
-                <td>Centímetros(cms)</td>
-            </tr>
-            <tr>
-                <th scope="row">P.Cintura</th>
-                <td>Perímetro de cintura</td>
-                <td>Centímetros(cms)</td>
-            </tr>
-            <tr>
-                <th scope="row">Peso</th>
-                <td></td>
-                <td>Kilógramo(Kg)</td>
-            </tr>
-            <tr>
-                <th scope="row">Talla</th>
-                <td>Estatura de una persona</td>
-                <td>Metros(mts)</td>
-            </tr>
-            <tr>
-                <th scope="row">IMC</th>
-                <td>Indice de masa corporal</td>
-                <td>Kg/mts²</td>
-            </tr>
-        </tbody>
-    </table>
-
-
-
-
 
 
 
