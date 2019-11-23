@@ -357,7 +357,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod",
+                url: "/Home/AjaxMethod1",
                 data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
@@ -392,7 +392,7 @@
 
                     for (var i = 0; i < data.length; i++) {
                         ingresoKG.push(data[i].value0, data[i].value1);
-                        egresoKG.push(data[i].value9, data[i].value10);
+                        egresoKG.push(data[i].value2, data[i].value3);
                     }
 
                     //console.log(ingreso);
@@ -505,7 +505,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod",
+                url: "/Home/AjaxMethod2",
                 data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
@@ -539,8 +539,8 @@
                     }
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoMG.push(data[i].value2);
-                        egresoMG.push(data[i].value11);
+                        ingresoMG.push(data[i].value0);
+                        egresoMG.push(data[i].value1);
                     }
 
                     //console.log(ingreso);
@@ -650,7 +650,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod",
+                url: "/Home/AjaxMethod3",
                 data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
@@ -684,8 +684,8 @@
                     }
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoNivelGV.push(data[i].value3);
-                        egresoNivelGV.push(data[i].value12);
+                        ingresoNivelGV.push(data[i].value0);
+                        egresoNivelGV.push(data[i].value1);
                     }
 
                     //console.log(ingreso);
@@ -717,7 +717,7 @@
                                                 borderWidth: 2,
                                                 label: {
                                                     enabled: true,
-                                                    content: 'Normal:'+10
+                                                    content: 'Normal:' + 10
                                                 }
 
                                             }
@@ -810,7 +810,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod",
+                url: "/Home/AjaxMethod4",
                 data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
@@ -844,8 +844,8 @@
                     }
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoIndice.push(data[i].value4);
-                        egresoIndice.push(data[i].value13);
+                        ingresoIndice.push(data[i].value0);
+                        egresoIndice.push(data[i].value1);
                     }
 
                     //console.log(ingreso);
@@ -954,7 +954,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod",
+                url: "/Home/AjaxMethod5",
                 data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
@@ -989,8 +989,8 @@
 
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoCintura.push(data[i].value5);
-                        egresoCintura.push(data[i].value14);
+                        ingresoCintura.push(data[i].value0);
+                        egresoCintura.push(data[i].value1);
 
                     }
 
@@ -1148,7 +1148,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod",
+                url: "/Home/AjaxMethod6",
                 data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
@@ -1183,9 +1183,9 @@
 
                     var talla = []
                     for (var i = 0; i < data.length; i++) {
-                        ingresoPeso.push(data[i].value6);
-                        egresoPeso.push(data[i].value15);
-                        talla.push(data[i].value7);
+                        ingresoPeso.push(data[i].value0);
+                        egresoPeso.push(data[i].value1);
+                        talla.push(data[i].value2);
                     }
 
                     //console.log(ingreso);
@@ -1332,7 +1332,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod",
+                url: "/Home/AjaxMethod7",
                 data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
@@ -1366,8 +1366,8 @@
                     }
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoTalla.push(data[i].value7);
-                        egresoTalla.push(data[i].value16);
+                        ingresoTalla.push(data[i].value0);
+                        egresoTalla.push(data[i].value1);
                     }
 
                     //console.log(ingreso);
@@ -1479,7 +1479,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod",
+                url: "/Home/AjaxMethod8",
                 data: "{Paciente: '" + $("#ddlPaciente").val() + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
@@ -1513,8 +1513,8 @@
                     }
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoIMC.push(data[i].value8);
-                        egresoIMC.push(data[i].value17);
+                        ingresoIMC.push(data[i].value0);
+                        egresoIMC.push(data[i].value1);
                     }
 
                     //console.log(ingreso);
@@ -1546,7 +1546,7 @@
                                                 borderWidth: 2,
                                                 label: {
                                                     enabled: true,
-                                                    content: 'Normal:'+24.9
+                                                    content: 'Normal:' + 24.9
                                                 }
 
                                             }
@@ -1738,7 +1738,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod2",
+                url: "/Home/AjaxMethodPro1",
                 data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
                 //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -1781,8 +1781,8 @@
 
                     for (var i = 0; i < data.length; i++) {
                         ingresoProKG.push(data[i].value0, data[i].value1);
-                        egresoProKG.push(data[i].value9, data[i].value10);
-                        cantidad_personas.push(data[i].value18);
+                        egresoProKG.push(data[i].value2, data[i].value3);
+                        cantidad_personas.push(data[i].value4);
                     }
                     $("#dvTabla").append(cantidad_personas);
 
@@ -1894,7 +1894,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod2",
+                url: "/Home/AjaxMethodPro2",
                 data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
                 //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -1934,8 +1934,8 @@
 
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoProMG.push(data[i].value2);
-                        egresoProMG.push(data[i].value11);
+                        ingresoProMG.push(data[i].value0);
+                        egresoProMG.push(data[i].value1);
 
                     }
 
@@ -2047,7 +2047,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod2",
+                url: "/Home/AjaxMethodPro3",
                 data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
                 //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -2087,8 +2087,8 @@
 
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoProNivel.push(data[i].value3);
-                        egresoProNivel.push(data[i].value12);
+                        ingresoProNivel.push(data[i].value0);
+                        egresoProNivel.push(data[i].value1);
 
                     }
 
@@ -2198,7 +2198,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod2",
+                url: "/Home/AjaxMethodPro4",
                 data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
                 //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -2238,8 +2238,8 @@
 
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoProIndice.push(data[i].value4);
-                        egresoProIndice.push(data[i].value13);
+                        ingresoProIndice.push(data[i].value0);
+                        egresoProIndice.push(data[i].value1);
 
                     }
 
@@ -2353,7 +2353,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod2",
+                url: "/Home/AjaxMethodPro5",
                 data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
                 //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -2392,8 +2392,8 @@
 
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoProCintura.push(data[i].value5);
-                        egresoProCintura.push(data[i].value14);
+                        ingresoProCintura.push(data[i].value0);
+                        egresoProCintura.push(data[i].value1);
                     }
 
 
@@ -2506,7 +2506,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod2",
+                url: "/Home/AjaxMethodPro6",
                 data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
                 //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -2545,8 +2545,8 @@
 
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoProPeso.push(data[i].value6);
-                        egresoProPeso.push(data[i].value15);
+                        ingresoProPeso.push(data[i].value0);
+                        egresoProPeso.push(data[i].value1);
                     }
 
 
@@ -2659,7 +2659,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod2",
+                url: "/Home/AjaxMethodPro7",
                 data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
                 //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -2698,8 +2698,8 @@
 
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoProTalla.push(data[i].value7);
-                        egresoProTalla.push(data[i].value16);
+                        ingresoProTalla.push(data[i].value0);
+                        egresoProTalla.push(data[i].value1);
                     }
 
 
@@ -2818,7 +2818,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Home/AjaxMethod2",
+                url: "/Home/AjaxMethodPro8",
                 data: "{Genero: '" + genero + "', Control: '" + control + "', Morbidos: '" + morbidos + "', Fecha: '" + fecha + "'}",
                 //data: "{Genero: '" + $("#ddlGenero").val() + "'}",
                 contentType: "application/json; charset=utf-8",
@@ -2857,8 +2857,8 @@
 
 
                     for (var i = 0; i < data.length; i++) {
-                        ingresoProIMC.push(data[i].value8);
-                        egresoProIMC.push(data[i].value17);
+                        ingresoProIMC.push(data[i].value0);
+                        egresoProIMC.push(data[i].value1);
                     }
 
 

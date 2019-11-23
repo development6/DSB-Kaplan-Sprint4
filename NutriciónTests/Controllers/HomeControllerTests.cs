@@ -25,7 +25,7 @@ namespace Nutrición.Controllers.Tests
             Assert.IsNotNull(result);
         }
         
-
+        /*
         [TestMethod()]
         public void AjaxMethodTest1()
         {
@@ -78,7 +78,7 @@ namespace Nutrición.Controllers.Tests
 
             var paciente = instancia.AjaxMethod2("Masculino", "4", "HTA-DMIR", "2018--08-29");
             Assert.AreEqual(true, paciente);
-        }
+        }*/
 
     }
 }
