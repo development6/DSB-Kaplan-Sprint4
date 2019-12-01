@@ -25,14 +25,14 @@ namespace Nutrición.Controllers.Tests
             Assert.IsNotNull(result);
         }
         
-        /*
+        
         [TestMethod()]
         public void AjaxMethodTest1()
         {
             HomeController controller = new HomeController();
             var instancia = new HomeController();
 
-            var paciente = instancia.AjaxMethod("16");
+            var paciente = instancia.AjaxMethod1("16");
 
             Assert.AreEqual(true, paciente);
         }
@@ -43,7 +43,7 @@ namespace Nutrición.Controllers.Tests
             //Arrange
             var instancia = new HomeController();
             //Act
-            var paciente = instancia.AjaxMethod(string.Empty);
+            var paciente = instancia.AjaxMethod1(string.Empty);
             //Assert
             Assert.AreEqual(false, paciente);
         }
@@ -55,7 +55,7 @@ namespace Nutrición.Controllers.Tests
             HomeController controller = new HomeController();
             var instancia = new HomeController();
 
-            var paciente = instancia.AjaxMethod("17");
+            var paciente = instancia.AjaxMethod1("17");
 
             Assert.IsNotNull(paciente);
         }
@@ -66,7 +66,7 @@ namespace Nutrición.Controllers.Tests
             HomeController controller = new HomeController();
             var instancia = new HomeController();
 
-            var paciente = instancia.AjaxMethod2("Masculino", "5", "HTA-DMIR", "2018--08-29");
+            var paciente = instancia.AjaxMethodPro1("Masculino", "5", "HTA-DMIR", "2018--08-29");
             Assert.AreEqual(true, paciente);
         }
 
@@ -76,9 +76,9 @@ namespace Nutrición.Controllers.Tests
             HomeController controller = new HomeController();
             var instancia = new HomeController();
 
-            var paciente = instancia.AjaxMethod2("Masculino", "4", "HTA-DMIR", "2018--08-29");
+            var paciente = instancia.AjaxMethodPro1("Masculino", "4", "HTA-DMIR", "2018--08-29");
             Assert.AreEqual(true, paciente);
-        }*/
+        }
 
     }
 }
