@@ -91,8 +91,8 @@ namespace Nutrición.Controllers
         [HttpPost]
         public ContentResult AjaxMethod1(string paciente)
         {
-            string query = "select Replace(Ficha_Nutricion1.kg_musc_ing, ',', '.'), Replace(Ficha_Nutricion1.kg_grasa_ing, ',', '.'), Replace(Ficha_Nutricion1.kg_musc_egr, ',', '.'), Replace(Ficha_Nutricion1.kg_grasa_egr, ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri)";
-            query += "FROM Ficha INNER JOIN  Ficha_Nutricion1 ON Ficha_Nutricion1.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion1.kg_musc_ing, Ficha_Nutricion1.kg_grasa_ing, Ficha_Nutricion1.kg_musc_egr, Ficha_Nutricion1.kg_grasa_egr";
+            string query = "select Replace(Ficha_Nutricion.kg_musc_ing, ',', '.'), Replace(Ficha_Nutricion.kg_grasa_ing, ',', '.'), Replace(Ficha_Nutricion.kg_musc_egr, ',', '.'), Replace(Ficha_Nutricion.kg_grasa_egr, ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri)";
+            query += "FROM Ficha INNER JOIN  Ficha_Nutricion ON Ficha_Nutricion.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion.kg_musc_ing, Ficha_Nutricion.kg_grasa_ing, Ficha_Nutricion.kg_musc_egr, Ficha_Nutricion.kg_grasa_egr";
             //string query = "select K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr, COUNT(K.id_ficha_kine)";
             //query += "FROM Ficha_Kinesiologia K, Ficha F, Paciente Pa Where K.id_ficha = F.id_ficha And F.id_paciente ='" + paciente + "'group by K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr";
 
@@ -140,8 +140,8 @@ namespace Nutrición.Controllers
         [HttpPost]
         public ContentResult AjaxMethod2(string paciente)
         {
-            string query = "select Replace(Ficha_Nutricion1.porc_mg_ing, ',', '.'), Replace(Ficha_Nutricion1.porc_mg_egr, ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri)";
-            query += "FROM Ficha INNER JOIN  Ficha_Nutricion1 ON Ficha_Nutricion1.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion1.porc_mg_ing, Ficha_Nutricion1.porc_mg_egr";
+            string query = "select Replace(Ficha_Nutricion.porc_mg_ing, ',', '.'), Replace(Ficha_Nutricion.porc_mg_egr, ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri)";
+            query += "FROM Ficha INNER JOIN  Ficha_Nutricion ON Ficha_Nutricion.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion.porc_mg_ing, Ficha_Nutricion.porc_mg_egr";
             //string query = "select K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr, COUNT(K.id_ficha_kine)";
             //query += "FROM Ficha_Kinesiologia K, Ficha F, Paciente Pa Where K.id_ficha = F.id_ficha And F.id_paciente ='" + paciente + "'group by K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr";
 
@@ -185,8 +185,8 @@ namespace Nutrición.Controllers
         [HttpPost]
         public ContentResult AjaxMethod3(string paciente)
         {
-            string query = "select Replace(Ficha_Nutricion1.nivel_gv_ing, ',', '.'), Replace(Ficha_Nutricion1.nivel_gv_egr, ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri)";
-            query += "FROM Ficha INNER JOIN  Ficha_Nutricion1 ON Ficha_Nutricion1.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion1.nivel_gv_ing, Ficha_Nutricion1.nivel_gv_egr";
+            string query = "select Replace(Ficha_Nutricion.nivel_gv_ing, ',', '.'), Replace(Ficha_Nutricion.nivel_gv_egr, ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri)";
+            query += "FROM Ficha INNER JOIN  Ficha_Nutricion ON Ficha_Nutricion.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion.nivel_gv_ing, Ficha_Nutricion.nivel_gv_egr";
             //string query = "select K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr, COUNT(K.id_ficha_kine)";
             //query += "FROM Ficha_Kinesiologia K, Ficha F, Paciente Pa Where K.id_ficha = F.id_ficha And F.id_paciente ='" + paciente + "'group by K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr";
 
@@ -229,8 +229,8 @@ namespace Nutrición.Controllers
         [HttpPost]
         public ContentResult AjaxMethod4(string paciente)
         {
-            string query = "select Replace(Ficha_Nutricion1.indice_ing, ',', '.'), Replace(Ficha_Nutricion1.indice_egr, ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri)";
-            query += "FROM Ficha INNER JOIN  Ficha_Nutricion1 ON Ficha_Nutricion1.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion1.indice_ing, Ficha_Nutricion1.indice_egr";
+            string query = "select Replace(Ficha_Nutricion.indice_ing, ',', '.'), Replace(Ficha_Nutricion.indice_egr, ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri)";
+            query += "FROM Ficha INNER JOIN  Ficha_Nutricion ON Ficha_Nutricion.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion.indice_ing, Ficha_Nutricion.indice_egr";
             //string query = "select K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr, COUNT(K.id_ficha_kine)";
             //query += "FROM Ficha_Kinesiologia K, Ficha F, Paciente Pa Where K.id_ficha = F.id_ficha And F.id_paciente ='" + paciente + "'group by K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr";
 
@@ -273,8 +273,8 @@ namespace Nutrición.Controllers
         [HttpPost]
         public ContentResult AjaxMethod5(string paciente)
         {
-            string query = "select Replace(Ficha_Nutricion1.p_cintura_ing, ',', '.'), Replace(Ficha_Nutricion1.p_cintura_egr, ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri)";
-            query += "FROM Ficha INNER JOIN  Ficha_Nutricion1 ON Ficha_Nutricion1.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion1.p_cintura_ing, Ficha_Nutricion1.p_cintura_egr";
+            string query = "select Replace(Ficha_Nutricion.p_cintura_ing, ',', '.'), Replace(Ficha_Nutricion.p_cintura_egr, ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri)";
+            query += "FROM Ficha INNER JOIN  Ficha_Nutricion ON Ficha_Nutricion.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion.p_cintura_ing, Ficha_Nutricion.p_cintura_egr";
             //string query = "select K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr, COUNT(K.id_ficha_kine)";
             //query += "FROM Ficha_Kinesiologia K, Ficha F, Paciente Pa Where K.id_ficha = F.id_ficha And F.id_paciente ='" + paciente + "'group by K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr";
 
@@ -317,8 +317,8 @@ namespace Nutrición.Controllers
         [HttpPost]
         public ContentResult AjaxMethod6(string paciente)
         {
-            string query = "select Replace(Ficha_Nutricion1.peso_ing, ',', '.'), Replace(Ficha_Nutricion1.peso_egr, ',', '.'), Replace(Ficha_Nutricion1.talla_ing, ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri)";
-            query += "FROM Ficha INNER JOIN  Ficha_Nutricion1 ON Ficha_Nutricion1.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion1.peso_ing, Ficha_Nutricion1.peso_egr, Ficha_Nutricion1.talla_ing";
+            string query = "select Replace(Ficha_Nutricion.peso_ing, ',', '.'), Replace(Ficha_Nutricion.peso_egr, ',', '.'), Replace(Ficha_Nutricion.talla_ing, ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri)";
+            query += "FROM Ficha INNER JOIN  Ficha_Nutricion ON Ficha_Nutricion.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion.peso_ing, Ficha_Nutricion.peso_egr, Ficha_Nutricion.talla_ing";
             //string query = "select K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr, COUNT(K.id_ficha_kine)";
             //query += "FROM Ficha_Kinesiologia K, Ficha F, Paciente Pa Where K.id_ficha = F.id_ficha And F.id_paciente ='" + paciente + "'group by K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr";
 
@@ -361,8 +361,8 @@ namespace Nutrición.Controllers
         [HttpPost]
         public ContentResult AjaxMethod7(string paciente)
         {
-            string query = "select Replace(Ficha_Nutricion1.talla_ing, ',', '.'), Replace(Ficha_Nutricion1.talla_egr, ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri)";
-            query += "FROM Ficha INNER JOIN  Ficha_Nutricion1 ON Ficha_Nutricion1.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion1.talla_ing, Ficha_Nutricion1.talla_egr";
+            string query = "select Replace(Ficha_Nutricion.talla_ing, ',', '.'), Replace(Ficha_Nutricion.talla_egr, ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri)";
+            query += "FROM Ficha INNER JOIN  Ficha_Nutricion ON Ficha_Nutricion.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion.talla_ing, Ficha_Nutricion.talla_egr";
             //string query = "select K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr, COUNT(K.id_ficha_kine)";
             //query += "FROM Ficha_Kinesiologia K, Ficha F, Paciente Pa Where K.id_ficha = F.id_ficha And F.id_paciente ='" + paciente + "'group by K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr";
 
@@ -406,8 +406,8 @@ namespace Nutrición.Controllers
         [HttpPost]
         public ContentResult AjaxMethod8(string paciente)
         {
-            string query = "select Replace(Ficha_Nutricion1.imc_ing, ',', '.'), Replace(Ficha_Nutricion1.imc_egr, ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri)";
-            query += "FROM Ficha INNER JOIN  Ficha_Nutricion1 ON Ficha_Nutricion1.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion1.imc_ing, Ficha_Nutricion1.imc_egr";
+            string query = "select Replace(Ficha_Nutricion.imc_ing, ',', '.'), Replace(Ficha_Nutricion.imc_egr, ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri)";
+            query += "FROM Ficha INNER JOIN  Ficha_Nutricion ON Ficha_Nutricion.id_ficha=Ficha.id_ficha inner join Paciente on Paciente.id_paciente = Ficha.id_paciente where Paciente.id_paciente = @Idpaciente GROUP BY Ficha_Nutricion.imc_ing, Ficha_Nutricion.imc_egr";
             //string query = "select K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr, COUNT(K.id_ficha_kine)";
             //query += "FROM Ficha_Kinesiologia K, Ficha F, Paciente Pa Where K.id_ficha = F.id_ficha And F.id_paciente ='" + paciente + "'group by K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr";
 
@@ -529,7 +529,7 @@ namespace Nutrición.Controllers
             //string query = "select AVG(Ficha_Kinesiologia.ergo_vol_ing), AVG(Ficha_Kinesiologia.ergo_voml_ing), AVG(Ficha_Kinesiologia.ergo_vol_egr), AVG(Ficha_Kinesiologia.ergo_voml_egr)";
             //query += "FROM Ficha INNER JOIN Ficha_Kinesiologia On Ficha_Kinesiologia.id_ficha=Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Ficha_Kinesiologia.riesgo = @Riesgo And Persona.sexo = @Genero and Ficha_Kinesiologia.ergo_fecha_egr = @Fecha group by Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing, Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing";
 
-            string query = "select Replace(AVG(Ficha_Nutricion1.kg_musc_ing), ',', '.'), Replace(AVG(Ficha_Nutricion1.kg_grasa_ing), ',', '.'), Replace(AVG(Ficha_Nutricion1.kg_musc_egr), ',', '.'), Replace(AVG(Ficha_Nutricion1.kg_grasa_egr), ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion1 On Ficha_Nutricion1.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion1.n_contr_nutr = @Control And Ficha_Nutricion1.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
+            string query = "select Replace(AVG(Ficha_Nutricion.kg_musc_ing), ',', '.'), Replace(AVG(Ficha_Nutricion.kg_grasa_ing), ',', '.'), Replace(AVG(Ficha_Nutricion.kg_musc_egr), ',', '.'), Replace(AVG(Ficha_Nutricion.kg_grasa_egr), ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion On Ficha_Nutricion.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion.n_contr_nutr = @Control And Ficha_Nutricion.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
 
             string constr = ConfigurationManager.ConnectionStrings["ConexionKaplan"].ConnectionString;
             StringBuilder sb = new StringBuilder();
@@ -581,7 +581,7 @@ namespace Nutrición.Controllers
             //string query = "select AVG(Ficha_Kinesiologia.ergo_vol_ing), AVG(Ficha_Kinesiologia.ergo_voml_ing), AVG(Ficha_Kinesiologia.ergo_vol_egr), AVG(Ficha_Kinesiologia.ergo_voml_egr)";
             //query += "FROM Ficha INNER JOIN Ficha_Kinesiologia On Ficha_Kinesiologia.id_ficha=Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Ficha_Kinesiologia.riesgo = @Riesgo And Persona.sexo = @Genero and Ficha_Kinesiologia.ergo_fecha_egr = @Fecha group by Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing, Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing";
 
-            string query = "select Replace(AVG(Ficha_Nutricion1.porc_mg_ing), ',', '.'), Replace(AVG(Ficha_Nutricion1.porc_mg_egr), ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion1 On Ficha_Nutricion1.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion1.n_contr_nutr = @Control And Ficha_Nutricion1.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
+            string query = "select Replace(AVG(Ficha_Nutricion.porc_mg_ing), ',', '.'), Replace(AVG(Ficha_Nutricion.porc_mg_egr), ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion On Ficha_Nutricion.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion.n_contr_nutr = @Control And Ficha_Nutricion.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
 
             string constr = ConfigurationManager.ConnectionStrings["ConexionKaplan"].ConnectionString;
             StringBuilder sb = new StringBuilder();
@@ -633,7 +633,7 @@ namespace Nutrición.Controllers
             //string query = "select AVG(Ficha_Kinesiologia.ergo_vol_ing), AVG(Ficha_Kinesiologia.ergo_voml_ing), AVG(Ficha_Kinesiologia.ergo_vol_egr), AVG(Ficha_Kinesiologia.ergo_voml_egr)";
             //query += "FROM Ficha INNER JOIN Ficha_Kinesiologia On Ficha_Kinesiologia.id_ficha=Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Ficha_Kinesiologia.riesgo = @Riesgo And Persona.sexo = @Genero and Ficha_Kinesiologia.ergo_fecha_egr = @Fecha group by Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing, Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing";
 
-            string query = "select Replace(AVG(Ficha_Nutricion1.nivel_gv_ing), ',', '.'), Replace(AVG(Ficha_Nutricion1.nivel_gv_egr), ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion1 On Ficha_Nutricion1.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion1.n_contr_nutr = @Control And Ficha_Nutricion1.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
+            string query = "select Replace(AVG(Ficha_Nutricion.nivel_gv_ing), ',', '.'), Replace(AVG(Ficha_Nutricion.nivel_gv_egr), ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion On Ficha_Nutricion.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion.n_contr_nutr = @Control And Ficha_Nutricion.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
 
             string constr = ConfigurationManager.ConnectionStrings["ConexionKaplan"].ConnectionString;
             StringBuilder sb = new StringBuilder();
@@ -685,7 +685,7 @@ namespace Nutrición.Controllers
             //string query = "select AVG(Ficha_Kinesiologia.ergo_vol_ing), AVG(Ficha_Kinesiologia.ergo_voml_ing), AVG(Ficha_Kinesiologia.ergo_vol_egr), AVG(Ficha_Kinesiologia.ergo_voml_egr)";
             //query += "FROM Ficha INNER JOIN Ficha_Kinesiologia On Ficha_Kinesiologia.id_ficha=Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Ficha_Kinesiologia.riesgo = @Riesgo And Persona.sexo = @Genero and Ficha_Kinesiologia.ergo_fecha_egr = @Fecha group by Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing, Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing";
 
-            string query = "select Replace(AVG(Ficha_Nutricion1.indice_ing), ',', '.'), Replace(AVG(Ficha_Nutricion1.indice_egr), ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion1 On Ficha_Nutricion1.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion1.n_contr_nutr = @Control And Ficha_Nutricion1.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
+            string query = "select Replace(AVG(Ficha_Nutricion.indice_ing), ',', '.'), Replace(AVG(Ficha_Nutricion.indice_egr), ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion On Ficha_Nutricion.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion.n_contr_nutr = @Control And Ficha_Nutricion.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
 
             string constr = ConfigurationManager.ConnectionStrings["ConexionKaplan"].ConnectionString;
             StringBuilder sb = new StringBuilder();
@@ -736,7 +736,7 @@ namespace Nutrición.Controllers
             //string query = "select AVG(Ficha_Kinesiologia.ergo_vol_ing), AVG(Ficha_Kinesiologia.ergo_voml_ing), AVG(Ficha_Kinesiologia.ergo_vol_egr), AVG(Ficha_Kinesiologia.ergo_voml_egr)";
             //query += "FROM Ficha INNER JOIN Ficha_Kinesiologia On Ficha_Kinesiologia.id_ficha=Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Ficha_Kinesiologia.riesgo = @Riesgo And Persona.sexo = @Genero and Ficha_Kinesiologia.ergo_fecha_egr = @Fecha group by Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing, Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing";
 
-            string query = "select Replace(AVG(Ficha_Nutricion1.p_cintura_ing), ',', '.'),Replace(AVG(Ficha_Nutricion1.p_cintura_egr), ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion1 On Ficha_Nutricion1.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion1.n_contr_nutr = @Control And Ficha_Nutricion1.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
+            string query = "select Replace(AVG(Ficha_Nutricion.p_cintura_ing), ',', '.'),Replace(AVG(Ficha_Nutricion.p_cintura_egr), ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion On Ficha_Nutricion.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion.n_contr_nutr = @Control And Ficha_Nutricion.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
 
             string constr = ConfigurationManager.ConnectionStrings["ConexionKaplan"].ConnectionString;
             StringBuilder sb = new StringBuilder();
@@ -787,7 +787,7 @@ namespace Nutrición.Controllers
             //string query = "select AVG(Ficha_Kinesiologia.ergo_vol_ing), AVG(Ficha_Kinesiologia.ergo_voml_ing), AVG(Ficha_Kinesiologia.ergo_vol_egr), AVG(Ficha_Kinesiologia.ergo_voml_egr)";
             //query += "FROM Ficha INNER JOIN Ficha_Kinesiologia On Ficha_Kinesiologia.id_ficha=Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Ficha_Kinesiologia.riesgo = @Riesgo And Persona.sexo = @Genero and Ficha_Kinesiologia.ergo_fecha_egr = @Fecha group by Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing, Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing";
 
-            string query = "select Replace(AVG(Ficha_Nutricion1.peso_ing), ',', '.'),Replace(AVG(Ficha_Nutricion1.peso_egr), ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion1 On Ficha_Nutricion1.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion1.n_contr_nutr = @Control And Ficha_Nutricion1.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
+            string query = "select Replace(AVG(Ficha_Nutricion.peso_ing), ',', '.'),Replace(AVG(Ficha_Nutricion.peso_egr), ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion On Ficha_Nutricion.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion.n_contr_nutr = @Control And Ficha_Nutricion.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
 
             string constr = ConfigurationManager.ConnectionStrings["ConexionKaplan"].ConnectionString;
             StringBuilder sb = new StringBuilder();
@@ -839,7 +839,7 @@ namespace Nutrición.Controllers
             //string query = "select AVG(Ficha_Kinesiologia.ergo_vol_ing), AVG(Ficha_Kinesiologia.ergo_voml_ing), AVG(Ficha_Kinesiologia.ergo_vol_egr), AVG(Ficha_Kinesiologia.ergo_voml_egr)";
             //query += "FROM Ficha INNER JOIN Ficha_Kinesiologia On Ficha_Kinesiologia.id_ficha=Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Ficha_Kinesiologia.riesgo = @Riesgo And Persona.sexo = @Genero and Ficha_Kinesiologia.ergo_fecha_egr = @Fecha group by Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing, Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing";
 
-            string query = "select Replace(AVG(Ficha_Nutricion1.talla_ing), ',', '.'),Replace(AVG(Ficha_Nutricion1.talla_egr), ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion1 On Ficha_Nutricion1.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion1.n_contr_nutr = @Control And Ficha_Nutricion1.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
+            string query = "select Replace(AVG(Ficha_Nutricion.talla_ing), ',', '.'),Replace(AVG(Ficha_Nutricion.talla_egr), ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion On Ficha_Nutricion.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion.n_contr_nutr = @Control And Ficha_Nutricion.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
 
             string constr = ConfigurationManager.ConnectionStrings["ConexionKaplan"].ConnectionString;
             StringBuilder sb = new StringBuilder();
@@ -891,7 +891,7 @@ namespace Nutrición.Controllers
             //string query = "select AVG(Ficha_Kinesiologia.ergo_vol_ing), AVG(Ficha_Kinesiologia.ergo_voml_ing), AVG(Ficha_Kinesiologia.ergo_vol_egr), AVG(Ficha_Kinesiologia.ergo_voml_egr)";
             //query += "FROM Ficha INNER JOIN Ficha_Kinesiologia On Ficha_Kinesiologia.id_ficha=Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Ficha_Kinesiologia.riesgo = @Riesgo And Persona.sexo = @Genero and Ficha_Kinesiologia.ergo_fecha_egr = @Fecha group by Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing, Ficha_Kinesiologia.ergo_vol_ing, Ficha_Kinesiologia.ergo_voml_ing";
 
-            string query = "select Replace(AVG(Ficha_Nutricion1.imc_ing), ',', '.'),Replace(AVG(Ficha_Nutricion1.imc_egr), ',', '.'), COUNT(Ficha_Nutricion1.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion1 On Ficha_Nutricion1.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion1.n_contr_nutr = @Control And Ficha_Nutricion1.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
+            string query = "select Replace(AVG(Ficha_Nutricion.imc_ing), ',', '.'),Replace(AVG(Ficha_Nutricion.imc_egr), ',', '.'), COUNT(Ficha_Nutricion.id_ficha_nutri) From Ficha INNER JOIN Ficha_Nutricion On Ficha_Nutricion.id_ficha = Ficha.id_ficha INNER JOIN Paciente on Paciente.id_paciente = Ficha.id_paciente INNER JOIN Persona on Persona.id_persona = Paciente.id_persona where Persona.sexo = @Genero And Ficha_Nutricion.n_contr_nutr = @Control And Ficha_Nutricion.morbidos = @Morbidos And fecha_eval_ing BETWEEN @Fecha And GETDATE()";
 
             string constr = ConfigurationManager.ConnectionStrings["ConexionKaplan"].ConnectionString;
             StringBuilder sb = new StringBuilder();
