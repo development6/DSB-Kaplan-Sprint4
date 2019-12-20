@@ -97,6 +97,7 @@ namespace Nutrición.Controllers
             //query += "FROM Ficha_Kinesiologia K, Ficha F, Paciente Pa Where K.id_ficha = F.id_ficha And F.id_paciente ='" + paciente + "'group by K.ergo_vol_ing, K.ergo_voml_ing, K.ergo_fcmax_ing, K.ergo_vol_egr, K.ergo_voml_egr, K.ergo_fcmax_egr";
 
             string constr = ConfigurationManager.ConnectionStrings["ConexionKaplan"].ConnectionString;
+
             StringBuilder sb = new StringBuilder();
             using (SqlConnection con = new SqlConnection(constr))
             {
